@@ -23,6 +23,10 @@ public class ChooseDialogueBox : MonoBehaviour
 
     private bool active = false;
 
+    [HideInInspector] public int selectedButtonIndex;
+    [HideInInspector] public int maxButtons;
+    [HideInInspector] public List<Button> buttons = new List<Button>();
+
     private void Start()
     {
     }
@@ -51,6 +55,47 @@ public class ChooseDialogueBox : MonoBehaviour
                 active = false;
                 this.instance.callback(null);
             }
+
+            if(maxButtons == 0)
+            {
+                return;
+            }
+
+            if(Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                this.instance.selectedButtonIndex--;
+                if(this.instance.selectedButtonIndex <= 0)
+                {
+                    this.instance.selectedButtonIndex = maxButtons;
+                }
+                this.instance.selectedButtonIndex %= maxButtons;
+            }
+
+            if(Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                this.instance.selectedButtonIndex++;
+                this.instance.selectedButtonIndex %= maxButtons;
+            }
+
+            if(Input.GetKeyDown(KeyCode.Z))
+            {
+                this.instance.buttons[this.instance.selectedButtonIndex].onClick.Invoke();
+            }
+
+            Debug.Log(this.instance.buttons.Count);
+
+            int index = 0;
+            foreach(var b in this.instance.buttons)
+            {
+                Image i = b.GetComponent<Image>();
+                i.color = new Color(i.color.r, i.color.g, i.color.b, 0);
+
+                if(index == this.instance.selectedButtonIndex)
+                {
+                    i.color = new Color(i.color.r, i.color.g, i.color.b, 1);
+                }
+                index++;
+            }
         }
     }
 
@@ -62,6 +107,9 @@ public class ChooseDialogueBox : MonoBehaviour
     // Start is called before the first frame update
     public void show(string name,float time, params string[] msg)
     {
+        this.instance.selectedButtonIndex = 0;
+        this.instance.buttons.Clear();
+        this.instance.maxButtons = msg.Length;
         this.instance.gameObject.SetActive(true);
         foreach (Transform child in this.instance.layoutGroup.transform) {
             GameObject.Destroy(child.gameObject);
@@ -82,6 +130,7 @@ public class ChooseDialogueBox : MonoBehaviour
                 this.instance.active = false;
                 this.instance.callback(m);
             });
+            this.instance.buttons.Add(b);
         }
         
     }

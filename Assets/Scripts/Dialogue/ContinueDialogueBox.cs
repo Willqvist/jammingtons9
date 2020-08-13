@@ -52,12 +52,12 @@ public class ContinueDialogueBox : MonoBehaviour
 
     private void Update()
     {
-        if (this.instance.continueField.activeInHierarchy && Input.GetKeyDown(KeyCode.E))
+        if (this.instance.continueField.activeInHierarchy && Input.GetKeyDown(KeyCode.Z))
         {
             this.callback();
         }
 
-        if (this.started && !this.instance.continueField.activeInHierarchy && Input.GetKeyDown(KeyCode.E))
+        if (this.started && !this.instance.continueField.activeInHierarchy && Input.GetKeyDown(KeyCode.Z))
         {
             TypeWriter.Instance.Speedup();
         }
