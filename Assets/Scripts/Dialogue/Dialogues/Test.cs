@@ -7,10 +7,7 @@ public class Test : Dialogue
     // Start is called before the first frame update
     protected override void onStart()
     {
-        setupDialogue("Kalle", () =>
-        {
-            
-        });
+
     }
 
     // Update is called once per frame
