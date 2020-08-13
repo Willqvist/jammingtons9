@@ -82,8 +82,6 @@ public class ChooseDialogueBox : MonoBehaviour
                 this.instance.buttons[this.instance.selectedButtonIndex].onClick.Invoke();
             }
 
-            Debug.Log(this.instance.buttons.Count);
-
             int index = 0;
             foreach(var b in this.instance.buttons)
             {

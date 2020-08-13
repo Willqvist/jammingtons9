@@ -9,6 +9,11 @@ public class PlayerShoot : MonoBehaviour
 
     void Update()
     {
+        if(GlobalVariables.Instance.PlayerIsStunned)
+        {
+            return;
+        }
+
         if(Input.GetKey(KeyCode.Z))
         {
             this.gun.Shoot(this.directionComponent.GetDirection());
