@@ -8,16 +8,17 @@ public class EasyDialogue : MonoBehaviour
     public Dialogue dialogue;
     public string name;
     public BoxCollider2D triggerer;
+
+    private NpcDialogue npcDialogue;
     
     // Start is called before the first frame update
     void Start()
     {
-        var npcDialogue = this.gameObject.AddComponent<NpcDialogue>();
+        npcDialogue = this.gameObject.AddComponent<NpcDialogue>();
         npcDialogue.manager = this.gameObject.AddComponent<DialogueManager>();
         npcDialogue.manager.entry = dialogue;
         npcDialogue.rotationSpeed = 0;
         npcDialogue.name = name;
-
     }
 
     // Update is called once per frame
@@ -29,5 +30,10 @@ public class EasyDialogue : MonoBehaviour
     public void disable()
     {
         this.gameObject.SetActive(false);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        npcDialogue.onDialogueBegin();
     }
 }

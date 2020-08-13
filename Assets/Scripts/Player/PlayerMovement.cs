@@ -24,6 +24,14 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if(GlobalVariables.Instance.PlayerIsStunned)
+        {
+            this.horizontal = 0;
+            this.rb.velocity = new Vector2(0, this.rb.velocity.y);
+            this.animator.SetBool("walking", false);
+            return;
+        }
+
         this.horizontal = Input.GetAxisRaw("Horizontal");
 
         this.animator.SetBool("walking", Mathf.Abs(this.horizontal) > 0);

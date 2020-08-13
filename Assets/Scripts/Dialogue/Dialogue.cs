@@ -60,10 +60,14 @@ public class Dialogue : MonoBehaviour
         activeDialogue?.end();
     }
 
-    protected virtual void dialogue() { }
+    protected virtual void dialogue() 
+    {
+    }
 
     public void end()
     {
+        GlobalVariables.Instance.PlayerIsStunned = false;
+
         if(this.activeView != null)
             this.activeView.SetActive(false);
         this.activeView = null;

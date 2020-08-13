@@ -321,7 +321,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   layoutGroup: {fileID: 3321798693707088182}
-  buttonPrefab: {fileID: 6048875317456721107, guid: d4ec1e3d550bd2948b405db773200b55,
+  buttonPrefab: {fileID: 8972663981562790364, guid: d4ec1e3d550bd2948b405db773200b55,
     type: 3}
   l: {fileID: 1160249754244694897}
   r: {fileID: 3666077419276045893}
@@ -494,9 +494,9 @@ MonoBehaviour:
     m_Left: 0
     m_Right: 0
     m_Top: 0
-    m_Bottom: 0
-  m_ChildAlignment: 4
-  m_Spacing: 0
+    m_Bottom: 64
+  m_ChildAlignment: 6
+  m_Spacing: 16
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0

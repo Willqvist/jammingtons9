@@ -45,6 +45,7 @@ public class NpcDialogue : MonoBehaviour
     public void onDialogueBegin()
     {
         if (inDialogue) return;
+        GlobalVariables.Instance.PlayerIsStunned = true;
         inDialogue = true;
         manager.showDialogue(name,() =>
         {

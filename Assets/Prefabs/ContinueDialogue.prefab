@@ -236,7 +236,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Press E for next
+  m_Text: Press Z for next
 --- !u!1 &6223877332239435779
 GameObject:
   m_ObjectHideFlags: 0
