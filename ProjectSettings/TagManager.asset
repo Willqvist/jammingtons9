@@ -7,6 +7,8 @@ TagManager:
   - DialogueEntryCanvas
   - Enemy
   - Projectile
+  - Ground
+  - Environment
   layers:
   - Default
   - TransparentFX

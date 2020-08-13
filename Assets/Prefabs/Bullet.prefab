@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 2236630032678501420}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -1.3458686}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalScale: {x: 2, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -47,6 +47,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 16
+  dustParticles: {fileID: 3403881396235691977, guid: 13987bdcd6747e9478f5c4727c7ae3c5,
+    type: 3}
 --- !u!212 &2236630032678501411
 SpriteRenderer:
   m_ObjectHideFlags: 0

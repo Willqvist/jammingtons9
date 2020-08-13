@@ -21,7 +21,6 @@ public class Hurt : MonoBehaviour
                 Destroy(this.gameObject);
             }
 
-            Destroy(collision.gameObject);
             GameObject go = Instantiate(this.bloodSplat);
             go.transform.position = new Vector2(this.transform.position.x + Random.Range(-0.2f, 0.2f), this.transform.position.y - 0.2f);
 

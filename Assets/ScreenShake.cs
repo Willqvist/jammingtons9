@@ -30,7 +30,7 @@ public class ScreenShake : MonoBehaviour
     public void GetShotAtScreenShakeTemplate()
     {
         this.duration = 0.1f;
-        this.intensity = 0.5f;
-        this.radius = 0.25f;
+        this.intensity = 0.2f;
+        this.radius = 0.2f;
     }
 }

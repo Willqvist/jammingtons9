@@ -5,6 +5,7 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     public float speed;
+    public GameObject dustParticles;
 
     private Vector2 direction;
     private bool hasSetDirection;
@@ -25,6 +26,16 @@ public class Projectile : MonoBehaviour
         }
 
         this.rb.velocity = this.direction * speed;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.CompareTag("Environment"))
+        {
+            GameObject go = Instantiate(dustParticles);
+            go.transform.position = this.transform.position;
+        }
+        Destroy(this.gameObject);
     }
 
     public void SetDirection(Vector2 direction)

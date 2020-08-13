@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject feet;
     public LayerMask groundLayer;
     public SpriteRenderer spriteRenderer;
+    public Animator animator;
 
     private Rigidbody2D rb;
     private Vector3 originalScale;
@@ -25,6 +26,8 @@ public class PlayerMovement : MonoBehaviour
     {
         this.horizontal = Input.GetAxisRaw("Horizontal");
 
+        this.animator.SetBool("walking", Mathf.Abs(this.horizontal) > 0);
+
         if(Input.GetKey(KeyCode.Space) && IsGrounded())
         {
             Jump();
@@ -37,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
 
         if(this.horizontal < 0)
         {
+            this.transform.localScale = this.originalScale;
             this.transform.localScale = new Vector3(-this.originalScale.x, this.originalScale.y, this.originalScale.z);
         }
     }
