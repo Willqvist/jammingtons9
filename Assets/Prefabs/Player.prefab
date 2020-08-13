@@ -323,11 +323,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Weapon_Ak47
       objectReference: {fileID: 0}
-    - target: {fileID: 5654611389865305322, guid: 735b2a16935368944a9186cc76cb1def,
-        type: 3}
-      propertyPath: cooldownBetweenProjectiles
-      value: 0.5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 735b2a16935368944a9186cc76cb1def, type: 3}
 --- !u!4 &4418106416355810513 stripped

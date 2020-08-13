@@ -10,6 +10,7 @@ public class Projectile : MonoBehaviour
     private bool hasSetDirection;
 
     private Rigidbody2D rb;
+    private Gun source;
 
     private void Start()
     {
@@ -30,5 +31,15 @@ public class Projectile : MonoBehaviour
     {
         this.direction = direction;
         this.hasSetDirection = true;
+    }
+
+    public void SetSource(Gun source)
+    {
+        this.source = source;
+    }
+
+    public Gun GetSource()
+    {
+        return this.source;
     }
 }

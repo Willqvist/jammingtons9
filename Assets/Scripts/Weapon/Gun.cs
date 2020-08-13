@@ -20,6 +20,7 @@ public class Gun : Weapon
         GameObject go = Instantiate(this.projectile);
         go.transform.position = shootOrigin.position;
         go.GetComponent<Projectile>().SetDirection(shootDirection);
+        go.GetComponent<Projectile>().SetSource(this);
 
         this.startedTimer = true;
         Timer.Instance.StartTimer(this.cooldownBetweenProjectiles, () => 
