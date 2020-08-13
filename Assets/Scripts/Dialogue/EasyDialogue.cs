@@ -34,6 +34,7 @@ public class EasyDialogue : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        npcDialogue.onDialogueBegin();
+        if(collision.gameObject.tag.Equals("Player"))
+            npcDialogue.onDialogueBegin();
     }
 }

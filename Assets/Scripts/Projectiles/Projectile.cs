@@ -32,16 +32,18 @@ public class Projectile : MonoBehaviour
     {
         if(other.CompareTag("Environment"))
         {
+            print("HELLO" + other.gameObject.name);
             GameObject go = Instantiate(dustParticles);
             go.transform.position = this.transform.position;
+            Destroy(this.gameObject);
         }
-        Destroy(this.gameObject);
     }
 
     public void SetDirection(Vector2 direction)
     {
         this.direction = direction;
         this.hasSetDirection = true;
+        transform.localScale = new Vector3(direction.x*transform.localScale.x,transform.localScale.y,transform.localScale.z);
     }
 
     public void SetSource(Gun source)

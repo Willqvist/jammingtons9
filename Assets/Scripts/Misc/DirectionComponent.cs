@@ -12,7 +12,7 @@ public class DirectionComponent : MonoBehaviour
         RIGHT
     }
 
-    private Direction direction;
+    private Direction direction = Direction.RIGHT;
 
     private void FixedUpdate()
     {
