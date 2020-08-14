@@ -5,7 +5,7 @@ using UnityEngine;
 public class DirectionComponent : MonoBehaviour
 {
     Vector3 oldPosition;
-
+    public Transform target;
     enum Direction
     {
         LEFT,
@@ -16,19 +16,16 @@ public class DirectionComponent : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector2 diff = this.transform.position - oldPosition;
-
-        if(diff.x > 0)
+        if (target.localScale.x > 0)
         {
             this.direction = Direction.RIGHT;
         }
 
-        if(diff.x < 0)
+        if (target.localScale.x < 0)
         {
             this.direction = Direction.LEFT;
         }
-        
-        this.oldPosition = this.transform.position;
+
     }
 
     public Vector2 GetDirection()

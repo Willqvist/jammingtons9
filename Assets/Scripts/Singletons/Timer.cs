@@ -10,12 +10,23 @@ public class Timer : MonoBehaviour
 
     private List<TimerInstance> timers = new List<TimerInstance>();
 
-    public void StartTimer(float duration, UnityAction callback)
+    public void StartTimer(string id, float duration, UnityAction callback)
     {
-        this.timers.Add(new TimerInstance(duration, callback));
+        this.timers.Add(new TimerInstance(id, duration, callback));
     }
 
-    private void Start()
+    public TimerInstance GetTimer(string id)
+    {
+        foreach(var timer in timers)
+        {
+            if (timer.id == id)
+                return timer;
+        }
+
+        return null;
+    }
+
+    private void Awake()
     {
         instance = this;
     }
@@ -36,11 +47,13 @@ public class Timer : MonoBehaviour
 
 public class TimerInstance
 {
+    public string id;
     public float duration;
     public UnityAction callback;
 
-    public TimerInstance(float duration, UnityAction callback)
+    public TimerInstance(string id, float duration, UnityAction callback)
     {
+        this.id = id;
         this.duration = duration;
         this.callback = callback;
     }
