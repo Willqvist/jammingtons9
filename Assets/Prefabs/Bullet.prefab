@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2236630032678501410}
   - component: {fileID: 4670523255750656128}
+  - component: {fileID: 13045992564144464}
   - component: {fileID: 2236630032678501411}
   - component: {fileID: 6645209464436235059}
   - component: {fileID: 6705618815637805877}
@@ -49,6 +50,18 @@ MonoBehaviour:
   speed: 16
   dustParticles: {fileID: 3403881396235691977, guid: 13987bdcd6747e9478f5c4727c7ae3c5,
     type: 3}
+--- !u!114 &13045992564144464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2236630032678501420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ce1399992c45a74583d6559ad7047d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &2236630032678501411
 SpriteRenderer:
   m_ObjectHideFlags: 0

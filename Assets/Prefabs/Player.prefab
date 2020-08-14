@@ -139,6 +139,7 @@ Transform:
   - {fileID: 4637525547485358473}
   - {fileID: 4418106416355810513}
   - {fileID: 5450380778269024096}
+  - {fileID: 2477596584651396573}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -157,11 +158,16 @@ MonoBehaviour:
   speed: 4
   jumpForce: 8
   feet: {fileID: 5450380778269024103}
+  feetVisual: {fileID: 8803128466299938680}
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
   spriteRenderer: {fileID: 873809206693466302}
   animator: {fileID: 1786996691862873908}
+  doubleJumpParticle: {fileID: 231812509872964769, guid: f1f589b1aace2704e834bb8f9b8045c2,
+    type: 3}
+  landParticle: {fileID: 6462802402851081411, guid: cfada62d40cb4f448928cd1447903610,
+    type: 3}
 --- !u!114 &5450380778008227786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,6 +284,36 @@ Transform:
   m_Father: {fileID: 5450380778008227790}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8803128466299938680
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2477596584651396573}
+  m_Layer: 0
+  m_Name: Feet_Visual
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2477596584651396573
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8803128466299938680}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5450380778008227790}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &8298290752556873785
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -339,16 +375,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5654611389865305320, guid: 735b2a16935368944a9186cc76cb1def,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5654611389865305320, guid: 735b2a16935368944a9186cc76cb1def,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 5654611389865305321, guid: 735b2a16935368944a9186cc76cb1def,
         type: 3}

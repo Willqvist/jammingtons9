@@ -19,9 +19,4 @@ public class PlayerShoot : MonoBehaviour
             this.gun.Shoot(this.directionComponent.GetDirection());
         }
     }
-
-    public void SetGun(Gun gun)
-    {
-        this.gun = gun;
-    }
 }

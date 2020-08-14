@@ -13,8 +13,6 @@ public class Projectile : MonoBehaviour
     private bool hasSetDirection;
 
     private Rigidbody2D rb;
-    private Gun source;
-
     private void Start()
     {
         this.rb = this.GetComponent<Rigidbody2D>();
@@ -42,7 +40,7 @@ public class Projectile : MonoBehaviour
             var Shape = system.shape;
             var main = system.main;
             Shape.rotation = new Vector3(0,this.direction.x < 0 ? 90 : -90,0);
-            main.startSpeed = (Random.value * 4) + 8;
+            //main.startSpeed = (Random.value * 4) + 8;
             //Destroy(this.gameObject);
             /*
             var normal = other.contacts[0].normal.normalized;
@@ -67,15 +65,5 @@ public class Projectile : MonoBehaviour
         this.direction = direction;
         this.hasSetDirection = true;
         transform.localScale = new Vector3(direction.x*transform.localScale.x,transform.localScale.y,transform.localScale.z);
-    }
-
-    public void SetSource(Gun source)
-    {
-        this.source = source;
-    }
-
-    public Gun GetSource()
-    {
-        return this.source;
     }
 }
