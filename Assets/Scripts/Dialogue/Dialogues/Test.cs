@@ -9,6 +9,10 @@ public class Test : Dialogue
 
     protected override async void dialogue()
     {
+        end();
+        EventDialogue.Instance.GetComponent<EasyDialogue>().BeginDialogue();
+        return;
+
         await this.showContinue("You see.. Gramps haven't always been as old as useless as he is now, you know, his story starts a long long time ago");
         ObjectActivator.Instance.player.SetActive(true);
         this.close();
@@ -73,6 +77,26 @@ public class Test : Dialogue
 
         GlobalVariables.Instance.PlayerIsStunned = false;
 
+        await this.showContinue("After this more cops and other shenanigans just kept coming.. and coming... You'll see");
+
+        await this.wait(2);
+
+        EventDialogue.Instance.GetComponent<EasyDialogue>().BeginDialogue();
+
         end();
     }
 }
+
+
+/*
+Cops spawn
+Bomb barrels
+Alien Attack Ufo
+Big Bad Guy
+Spawn health pickups
+X2 score
+Floor is lava
+Prison free day
+Squirrel attack
+Party mode
+*/

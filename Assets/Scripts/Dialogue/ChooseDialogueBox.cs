@@ -43,6 +43,7 @@ public class ChooseDialogueBox : MonoBehaviour
         this.instance = Instantiate(this, parent);
         this.instance.instance = this.instance;
         this.instance.gameObject.SetActive(false);
+        Debug.Log("wew");
     }
 
     private Vector3 scale = new Vector3(1,1,1);

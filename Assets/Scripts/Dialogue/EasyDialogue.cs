@@ -18,7 +18,6 @@ public class EasyDialogue : MonoBehaviour
         npcDialogue.manager.entry = dialogue;
         npcDialogue.rotationSpeed = 0;
         npcDialogue.name = name;
-        npcDialogue.onDialogueBegin();
     }
 
     // Update is called once per frame
@@ -30,5 +29,10 @@ public class EasyDialogue : MonoBehaviour
     public void disable()
     {
         this.gameObject.SetActive(false);
+    }
+
+    public void BeginDialogue()
+    {
+        npcDialogue.onDialogueBegin();
     }
 }
