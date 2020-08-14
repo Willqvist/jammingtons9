@@ -14,6 +14,13 @@ public class ScreenShake : MonoBehaviour
     
     private void Start()
     {
+        originalCameraPosition = Camera.main.transform.position;
+
+        Timer.Instance.StartTimer("ScreenShake", duration, () =>
+        {
+            Camera.main.transform.position = new Vector2(0, Camera.main.transform.position.y);
+            Destroy(this.gameObject);
+        });
     }
 
     private void Update()
@@ -24,13 +31,6 @@ public class ScreenShake : MonoBehaviour
 
     public void GetShotAtScreenShakeTemplate()
     {
-        originalCameraPosition = Camera.main.transform.position;
-
-        Timer.Instance.StartTimer("ScreenShake", duration, () => 
-        {
-            Camera.main.transform.position = originalCameraPosition;
-            Destroy(this.gameObject);
-        });
         this.duration = 0.1f;
         this.intensity = 0.2f;
         this.radius = 0.2f;
