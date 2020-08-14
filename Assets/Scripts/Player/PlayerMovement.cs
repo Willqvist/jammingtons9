@@ -30,7 +30,6 @@ public class PlayerMovement : MonoBehaviour
     {
         if (IsGrounded() && !lastFrameGrounded)
         {
-            Debug.Log("IM HERE DUDE");
             this.animator.SetTrigger("down");
             this.animator.ResetTrigger("jump");
             this.animator.ResetTrigger("fall");
