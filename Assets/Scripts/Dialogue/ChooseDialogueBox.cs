@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ChooseDialogueBox : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class ChooseDialogueBox : MonoBehaviour
     public RectTransform l, r;
 
     public Text content;
+
+    public Text title;
 
     private ChooseDialogueBox instance;
 
@@ -129,6 +132,7 @@ public class ChooseDialogueBox : MonoBehaviour
             this.instance.content.text = callbackText;
         });
 
+        this.instance.title.text = name;
         this.instance.selectedButtonIndex = 0;
         this.instance.buttons.Clear();
         this.instance.maxButtons = msg.Length;
