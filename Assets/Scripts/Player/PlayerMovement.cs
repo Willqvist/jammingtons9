@@ -128,7 +128,6 @@ public class PlayerMovement : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.tag.Equals("shell")) {
-            Debug.Log("COLLIDNG SHELL");
             Physics2D.IgnoreCollision(other.collider, collider); 
         }
     }
