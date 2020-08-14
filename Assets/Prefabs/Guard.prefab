@@ -29,7 +29,7 @@ Transform:
   m_LocalScale: {x: 2, y: 4, z: 1}
   m_Children: []
   m_Father: {fileID: 2120367154477812473}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!114 &2120367153389164355
 MonoBehaviour:
@@ -84,6 +84,11 @@ GameObject:
   - component: {fileID: 2120367154477812473}
   - component: {fileID: 2120367154477812477}
   - component: {fileID: 2120367154477812476}
+  - component: {fileID: 8243554453394812067}
+  - component: {fileID: 3525066979209819292}
+  - component: {fileID: 3998006997591523338}
+  - component: {fileID: 1001937632607212573}
+  - component: {fileID: 9069193626064058452}
   - component: {fileID: 2120367154477812475}
   - component: {fileID: 2120367154477812474}
   m_Layer: 0
@@ -105,7 +110,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2516585951786986552}
-  - {fileID: 2120367154922505552}
   - {fileID: 2120367153389164352}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -123,15 +127,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectWithTagToBeHurtBy: Projectile
-  bloodSplat: {fileID: 424826118690936899, guid: 7d1bc6991dc2e3346a293559ba46b2e7,
-    type: 3}
-  bloodSplatParticle: {fileID: 5338429576517709237, guid: da3aa3f912652ed4f838f8fb03720142,
-    type: 3}
   screenShake: {fileID: 7443479458132420832, guid: 775859316c8e6c046bf5680003b5e9b5,
     type: 3}
   health: {fileID: 2120367154477812476}
-  headDeath: {fileID: 2736490051191072295, guid: 68f75fc7a4834cf488ab54d19260b155,
-    type: 3}
+  onHurt:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8243554453394812067}
+        m_TargetAssemblyTypeName: BloodSplat, Assembly-CSharp
+        m_MethodName: CreateBloodSplatEffect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3525066979209819292}
+        m_TargetAssemblyTypeName: HeadRoll, Assembly-CSharp
+        m_MethodName: CreateHeadRollEffect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2120367154477812476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,8 +172,79 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b29b126734d8717418971945a1fb269c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 1
-  currentHealth: 1
+  maxHealth: 25
+  currentHealth: 25
+--- !u!114 &8243554453394812067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2120367154477812454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11e4448d228221746b03de242db2d43c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bloodSplat: {fileID: 424826118690936899, guid: 7d1bc6991dc2e3346a293559ba46b2e7,
+    type: 3}
+  bloodSplatParticle: {fileID: 5338429576517709237, guid: da3aa3f912652ed4f838f8fb03720142,
+    type: 3}
+--- !u!114 &3525066979209819292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2120367154477812454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a540be524bebbe6479314e092359202a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  head: {fileID: 2736490051191072295, guid: 68f75fc7a4834cf488ab54d19260b155, type: 3}
+--- !u!114 &3998006997591523338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2120367154477812454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d51111b47b6d580429f0503c5605915d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 5865015960606437193}
+  jumpForce: 8
+--- !u!114 &1001937632607212573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2120367154477812454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84470d9945d92994ca410bad09683454, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetToScale: {fileID: 2120367154477812473}
+--- !u!114 &9069193626064058452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2120367154477812454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: deb0d4be6ee4d124498d18eb76ca3c99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onSetDirection:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!50 &2120367154477812475
 Rigidbody2D:
   serializedVersion: 4
@@ -193,36 +292,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!1 &2120367154922505553
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2120367154922505552}
-  m_Layer: 0
-  m_Name: WalkNode
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2120367154922505552
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2120367154922505553}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2120367154477812473}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2458260112941168294
 GameObject:
   m_ObjectHideFlags: 0

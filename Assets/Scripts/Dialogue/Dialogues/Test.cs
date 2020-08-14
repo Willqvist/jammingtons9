@@ -5,8 +5,6 @@ using UnityEngine;
 public class Test : Dialogue
 {
     public AudioSource plop;
-    public GameObject pistol;
-    public GameObject raygun;
     public GameObject prison;
 
     protected override async void dialogue()
@@ -48,6 +46,32 @@ public class Test : Dialogue
             prison.SetActive(true);
         }
 
+        this.close();
+
+        GlobalVariables.Instance.PlayerIsStunned = false;
+
+        await this.wait(2f);
+
+        GlobalVariables.Instance.PlayerIsStunned = true;
+
+        await this.showOptions(10f, "He was sitting there... waiting for days, for something to happen, but then a", "Cop showed up!");
+
+        GlobalVariables.Instance.PlayerIsStunned = false;
+
+        this.close();
+
+        GameObject go = Instantiate(PrefabRepository.Instance.guard);
+        go.transform.position = SpawnPositions.Instance.spawnPositions[0].transform.position;
+
+        await this.waitForMethod(go.GetComponent<Hurt>().onDeath);
+
+        await this.wait(1f);
+
+        GlobalVariables.Instance.PlayerIsStunned = false;
+
+        await this.showContinue("...And then he killed him!");
+
+        GlobalVariables.Instance.PlayerIsStunned = true;
 
         end();
     }
