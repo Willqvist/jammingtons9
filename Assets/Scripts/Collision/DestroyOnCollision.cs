@@ -1,16 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DestroyOnCollision : MonoBehaviour
 {
-    public string targetTag;
+    public string[] targetTags;
+    public UnityEvent onDestroy;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == targetTag)
+        foreach(var targetTag in targetTags)
         {
-            Destroy(this.gameObject);
+            if (collision.tag == targetTag)
+            {
+                this.onDestroy.Invoke();
+                Destroy(this.gameObject);
+            }
         }
     }
 }
