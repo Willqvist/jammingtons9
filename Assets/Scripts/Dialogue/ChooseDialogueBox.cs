@@ -48,6 +48,11 @@ public class ChooseDialogueBox : MonoBehaviour
     {
         if (active)
         {
+            if (!TypeWriter.Instance.IsFinished() && Input.GetKeyDown(KeyCode.Z))
+            {
+                TypeWriter.Instance.Speedup();
+            }
+
             if (TypeWriter.Instance.IsFinished())
             {
                 this.instance.layoutGroup.gameObject.SetActive(true);

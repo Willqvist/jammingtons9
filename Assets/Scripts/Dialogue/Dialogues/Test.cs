@@ -36,7 +36,7 @@ public class Test : Dialogue
         GlobalVariables.Instance.PlayerIsStunned = false;
         await this.wait(4f);
         GlobalVariables.Instance.PlayerIsStunned = true;
-        result = await this.showOptions(10f, "He used this to", "Escape Prison");
+        result = await this.showOptions(10f, "Your gramps he really liked his guns... he would always play around with them as a child, but as an adult, he used them to", "Escape Prison");
 
         await this.wait(0.01f);
         this.plop.Play();
@@ -67,11 +67,11 @@ public class Test : Dialogue
 
         await this.wait(1f);
 
-        GlobalVariables.Instance.PlayerIsStunned = false;
+        GlobalVariables.Instance.PlayerIsStunned = true;
 
         await this.showContinue("...And then he killed him!");
 
-        GlobalVariables.Instance.PlayerIsStunned = true;
+        GlobalVariables.Instance.PlayerIsStunned = false;
 
         end();
     }
