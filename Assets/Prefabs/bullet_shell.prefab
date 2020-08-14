@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 8344480813461165519}
   - component: {fileID: 1499469084271902539}
   - component: {fileID: 2652989802111473483}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: bullet_shell
-  m_TagString: Untagged
+  m_TagString: shell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -92,7 +92,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6964473181788602120}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0

@@ -10,6 +10,7 @@ public class Hurt : MonoBehaviour
     public GameObject bloodSplatParticle;
     public GameObject screenShake;
     public Health health;
+    public GameObject headDeath;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -26,6 +27,12 @@ public class Hurt : MonoBehaviour
         if (this.health.currentHealth <= 0)
         {
             Destroy(this.gameObject);
+            var obj = Instantiate(headDeath);
+            var rb = obj.GetComponent<Rigidbody2D>();
+            rb.transform.position = this.transform.position;
+            rb.velocity = new Vector2(0, 0);
+            rb.AddTorque(22);
+            rb.AddForce(new Vector2((Random.value*4+1), 14), ForceMode2D.Impulse);
         }
 
         GameObject go = Instantiate(this.bloodSplat);

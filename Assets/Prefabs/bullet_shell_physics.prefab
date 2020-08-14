@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -7254429758367233659}
   m_Layer: 8
   m_Name: bullet_shell_physics
-  m_TagString: Untagged
+  m_TagString: shell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -144,3 +144,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdaf7cf4c93fbd940992ba215ad182ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  colliding:
+    serializedVersion: 2
+    m_Bits: 0

@@ -9,6 +9,7 @@ TagManager:
   - Projectile
   - Ground
   - Environment
+  - shell
   layers:
   - Default
   - TransparentFX
@@ -20,8 +21,8 @@ TagManager:
   - 
   - Ground
   - Wall
-  - 
-  - 
+  - Shell
+  - IgnoreShell
   - 
   - 
   - 

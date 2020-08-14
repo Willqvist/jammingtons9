@@ -41,6 +41,7 @@ public class RaycastProjectile : MonoBehaviour
             {
                 if(h.transform.tag == t)
                 {
+                    
                     h.transform.GetComponent<Hurt>().DealDamage(this.damageDealer.Damage);
                     if(!hasHit)
                     {
