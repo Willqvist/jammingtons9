@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Dialogue : MonoBehaviour
 {
@@ -121,7 +122,30 @@ public class Dialogue : MonoBehaviour
     {
         return showContinue(/*audioProvider != null ? audioProvider():DialogueAudio.randomMaleSound()*/null,name, msg);
     }
-    
+
+    protected Task waitForBoolToBeTrue(bool val)
+    {
+        TaskCompletionSource<string> tcs1 = new TaskCompletionSource<string>();
+        if(val == true)
+        {
+            tcs1.SetResult("true");
+        }
+
+        return tcs1.Task;
+    }
+
+    protected Task waitForMethod(UnityEvent e)
+    {
+        TaskCompletionSource<string> tcs1 = new TaskCompletionSource<string>();
+
+        e.AddListener(() => 
+        {
+            tcs1.SetResult("true");
+        });
+
+        return tcs1.Task;
+    }
+
     protected void close()
     {
         activeView?.SetActive(false);

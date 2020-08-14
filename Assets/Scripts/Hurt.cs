@@ -6,11 +6,10 @@ using UnityEngine.Events;
 public class Hurt : MonoBehaviour
 {
     public string objectWithTagToBeHurtBy = "Projectile";
-    public GameObject bloodSplat;
-    public GameObject bloodSplatParticle;
     public GameObject screenShake;
     public Health health;
-    public GameObject headDeath;
+    public UnityEvent onHurt;
+    public UnityEvent onDeath;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -27,19 +26,10 @@ public class Hurt : MonoBehaviour
         if (this.health.currentHealth <= 0)
         {
             Destroy(this.gameObject);
-            var obj = Instantiate(headDeath);
-            var rb = obj.GetComponent<Rigidbody2D>();
-            rb.transform.position = this.transform.position;
-            rb.velocity = new Vector2(0, 0);
-            rb.AddTorque(22);
-            rb.AddForce(new Vector2((Random.value*4+1), 14), ForceMode2D.Impulse);
+            this.onDeath.Invoke();
         }
 
-        GameObject go = Instantiate(this.bloodSplat);
-        go.transform.position = new Vector2(this.transform.position.x + Random.Range(-0.2f, 0.2f), this.transform.position.y - 0.2f);
-
-        GameObject go2 = Instantiate(this.bloodSplatParticle);
-        go2.transform.position = this.transform.position;
+        this.onHurt.Invoke();
 
         GameObject go3 = Instantiate(this.screenShake);
         ScreenShake s = go3.GetComponent<ScreenShake>();

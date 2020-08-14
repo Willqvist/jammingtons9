@@ -171,6 +171,7 @@ MonoBehaviour:
     type: 3}
   landParticle: {fileID: 6462802402851081411, guid: cfada62d40cb4f448928cd1447903610,
     type: 3}
+  collider: {fileID: 5450380778008227785}
 --- !u!114 &5450380778008227786
 MonoBehaviour:
   m_ObjectHideFlags: 0

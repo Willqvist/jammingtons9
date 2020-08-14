@@ -84,6 +84,8 @@ GameObject:
   - component: {fileID: 2120367154477812473}
   - component: {fileID: 2120367154477812477}
   - component: {fileID: 2120367154477812476}
+  - component: {fileID: 8243554453394812067}
+  - component: {fileID: 3525066979209819292}
   - component: {fileID: 2120367154477812475}
   - component: {fileID: 2120367154477812474}
   m_Layer: 0
@@ -123,15 +125,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectWithTagToBeHurtBy: Projectile
-  bloodSplat: {fileID: 424826118690936899, guid: 7d1bc6991dc2e3346a293559ba46b2e7,
-    type: 3}
-  bloodSplatParticle: {fileID: 5338429576517709237, guid: da3aa3f912652ed4f838f8fb03720142,
-    type: 3}
   screenShake: {fileID: 7443479458132420832, guid: 775859316c8e6c046bf5680003b5e9b5,
     type: 3}
   health: {fileID: 2120367154477812476}
-  headDeath: {fileID: 2736490051191072295, guid: 68f75fc7a4834cf488ab54d19260b155,
-    type: 3}
+  onHurt:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8243554453394812067}
+        m_TargetAssemblyTypeName: BloodSplat, Assembly-CSharp
+        m_MethodName: CreateBloodSplatEffect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3525066979209819292}
+        m_TargetAssemblyTypeName: HeadRoll, Assembly-CSharp
+        m_MethodName: CreateHeadRollEffect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2120367154477812476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,8 +170,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b29b126734d8717418971945a1fb269c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 1
-  currentHealth: 1
+  maxHealth: 25
+  currentHealth: 25
+--- !u!114 &8243554453394812067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2120367154477812454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11e4448d228221746b03de242db2d43c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bloodSplat: {fileID: 424826118690936899, guid: 7d1bc6991dc2e3346a293559ba46b2e7,
+    type: 3}
+  bloodSplatParticle: {fileID: 5338429576517709237, guid: da3aa3f912652ed4f838f8fb03720142,
+    type: 3}
+--- !u!114 &3525066979209819292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2120367154477812454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a540be524bebbe6479314e092359202a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  head: {fileID: 2736490051191072295, guid: 68f75fc7a4834cf488ab54d19260b155, type: 3}
 --- !u!50 &2120367154477812475
 Rigidbody2D:
   serializedVersion: 4

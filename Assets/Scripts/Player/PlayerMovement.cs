@@ -46,6 +46,9 @@ public class PlayerMovement : MonoBehaviour
             this.horizontal = 0;
             this.rb.velocity = new Vector2(0, this.rb.velocity.y);
             this.animator.SetBool("walking", false);
+            this.animator.ResetTrigger("jump");
+            this.animator.ResetTrigger("fall");
+            this.animator.ResetTrigger("down");
             return;
         }
 
