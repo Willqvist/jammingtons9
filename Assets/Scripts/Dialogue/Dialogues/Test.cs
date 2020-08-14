@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
 
 public class Test : Dialogue
 {
     public AudioSource plop;
     public GameObject prison;
-
+    public Light2D globalLight;
     protected override async void dialogue()
     {
         await this.showContinue("You see.. Gramps haven't always been as old as useless as he is now, you know, his story starts a long long time ago");
@@ -43,6 +44,7 @@ public class Test : Dialogue
 
         if (result.Equals("Escape Prison"))
         {
+            globalLight.intensity = 0.45f;
             prison.SetActive(true);
         }
 

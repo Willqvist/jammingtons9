@@ -31,8 +31,6 @@ public class Hurt : MonoBehaviour
 
         this.onHurt.Invoke();
 
-        GameObject go3 = Instantiate(this.screenShake);
-        ScreenShake s = go3.GetComponent<ScreenShake>();
-        s.GetShotAtScreenShakeTemplate();
+        
     }
 }

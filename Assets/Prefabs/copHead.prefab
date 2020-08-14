@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6574159628092139591}
   - component: {fileID: 5969553593725000412}
   - component: {fileID: 3927067278709006138}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: copHead
   m_TagString: Environment
   m_Icon: {fileID: 0}
@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 981778057357543489}
   - component: {fileID: 7715817844807564820}
   - component: {fileID: 7708815813875739972}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}

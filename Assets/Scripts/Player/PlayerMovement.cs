@@ -62,16 +62,19 @@ public class PlayerMovement : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Space) && (IsGrounded() || !doubleJump))
         {
+            this.animator.SetTrigger("jump");
+            this.animator.ResetTrigger("down");
             if(!IsGrounded() && !doubleJump)
             {
                 doubleJump = true;
                 GameObject go = Instantiate(doubleJumpParticle);
                 go.transform.position = this.feetVisual.transform.position;
+                DoubleJump();
             }
-
-            this.animator.SetTrigger("jump");
-            this.animator.ResetTrigger("down");
-            Jump();
+            else
+            {
+                Jump();
+            }
         }
 
         if(IsGrounded())
@@ -114,6 +117,12 @@ public class PlayerMovement : MonoBehaviour
     void Jump()
     {
         Vector2 movement = new Vector2(rb.velocity.x, jumpForce);
+        rb.velocity = movement;
+    }
+    
+    void DoubleJump()
+    {
+        Vector2 movement = new Vector2(rb.velocity.x, jumpForce*1.5f);
         rb.velocity = movement;
     }
 

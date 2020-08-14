@@ -6,6 +6,6 @@ public class DestroyOnAnimationFinish : MonoBehaviour
 {
     public void OnAnimationFinish()
     {
-        Destroy(this.gameObject);
+        Destroy(this.transform.parent.gameObject);
     }
 }

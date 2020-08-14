@@ -8,6 +8,8 @@ public class ScreenShake : MonoBehaviour
     public float intensity;
     public float duration;
 
+    public bool hasParent = false;
+    
     private Vector3 originalCameraPosition;
     
     private Vector3 screenShake = new Vector3(0,0,0);
@@ -15,11 +17,11 @@ public class ScreenShake : MonoBehaviour
     private void Start()
     {
         originalCameraPosition = Camera.main.transform.position;
-
         Timer.Instance.StartTimer("ScreenShake", duration, () =>
         {
             Camera.main.transform.position = new Vector2(0, Camera.main.transform.position.y);
-            Destroy(this.gameObject);
+            if(!hasParent)
+                Destroy(this.gameObject);
         });
     }
 
