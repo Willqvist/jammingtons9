@@ -15,7 +15,8 @@ public class Hurt : MonoBehaviour
     {
         if(collision.tag == objectWithTagToBeHurtBy)
         {
-            this.health.RemoveHealth(collision.gameObject.GetComponent<Projectile>().GetSource().weaponData.damage);
+            this.health.RemoveHealth(collision.gameObject.GetComponent<DamageDealer>().Damage);
+
             if(this.health.currentHealth <= 0)
             {
                 Destroy(this.gameObject);
@@ -30,6 +31,7 @@ public class Hurt : MonoBehaviour
             GameObject go3 = Instantiate(this.screenShake);
             ScreenShake s = go3.GetComponent<ScreenShake>();
             s.GetShotAtScreenShakeTemplate();
+            Destroy(collision.gameObject);
         }
     }
 }

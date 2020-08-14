@@ -7,9 +7,12 @@ public class PlayerMovement : MonoBehaviour
     public float speed;
     public float jumpForce;
     public GameObject feet;
+    public GameObject feetVisual;
     public LayerMask groundLayer;
     public SpriteRenderer spriteRenderer;
     public Animator animator;
+    public GameObject doubleJumpParticle;
+    public GameObject landParticle;
 
     private Rigidbody2D rb;
     private Vector3 originalScale;
@@ -19,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     private bool falling = false;
 
     private bool lastFrameGrounded = false;
+    private bool doubleJump = false;
 
     void Start()
     {
@@ -48,11 +52,28 @@ public class PlayerMovement : MonoBehaviour
 
         this.animator.SetBool("walking", Mathf.Abs(this.horizontal) > 0);
 
-        if(Input.GetKey(KeyCode.Space) && IsGrounded())
+        if(Input.GetKeyDown(KeyCode.Space) && (IsGrounded() || !doubleJump))
         {
+            if(!IsGrounded() && !doubleJump)
+            {
+                doubleJump = true;
+                GameObject go = Instantiate(doubleJumpParticle);
+                go.transform.position = this.feetVisual.transform.position;
+            }
+
             this.animator.SetTrigger("jump");
             this.animator.ResetTrigger("down");
             Jump();
+        }
+
+        if(IsGrounded())
+        {
+            if(doubleJump)
+            {
+                GameObject go = Instantiate(landParticle);
+                go.transform.position = this.feetVisual.transform.position;
+            }
+            doubleJump = false;
         }
 
         if (!IsGrounded() && rb.velocity.y < 0 && !falling)

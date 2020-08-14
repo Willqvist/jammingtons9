@@ -28,9 +28,4 @@ public class PlayerShoot : MonoBehaviour
             }
         }
     }
-
-    public void SetGun(Gun gun)
-    {
-        this.gun = gun;
-    }
 }
