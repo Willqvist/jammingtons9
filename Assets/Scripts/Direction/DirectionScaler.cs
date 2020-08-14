@@ -12,9 +12,15 @@ public class DirectionScaler : MonoBehaviour
     private void Start()
     {
         this.directionHolder = this.GetComponent<DirectionHolder>();
-        this.directionHolder.onSetDirection.AddListener(() =>
+    }
+
+    private void Update()
+    {
+        if(!this.directionHolder.HasSetDirection)
         {
-            this.targetToScale.localScale = new Vector3(Mathf.Sign(this.directionHolder.Direction.x), transform.localScale.y, transform.localScale.z);
-        });
+            return;
+        }
+
+        this.targetToScale.localScale = new Vector3(Mathf.Sign(this.directionHolder.Direction.x), transform.localScale.y, transform.localScale.z);
     }
 }
