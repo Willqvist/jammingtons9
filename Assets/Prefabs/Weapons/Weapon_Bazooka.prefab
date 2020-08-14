@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6167617724605334470}
   - component: {fileID: 6167617724605334468}
   - component: {fileID: 6167617724605334469}
+  - component: {fileID: 3130107683693956738}
   m_Layer: 11
   m_Name: Weapon_Bazooka
   m_TagString: Untagged
@@ -101,6 +102,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &3130107683693956738
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6167617724605334471}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7f15270b64dc3324493f556bcffb6c4a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6167617725014045345
 GameObject:
   m_ObjectHideFlags: 0
