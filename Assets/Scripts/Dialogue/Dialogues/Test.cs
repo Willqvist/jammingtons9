@@ -52,6 +52,8 @@ public class Test : Dialogue
 
         await this.wait(2f);
 
+        GlobalVariables.Instance.PlayerIsStunned = true;
+
         await this.showOptions(10f, "He was sitting there... waiting for days, for something to happen, but then a", "Cop showed up!");
 
         GlobalVariables.Instance.PlayerIsStunned = false;
@@ -65,7 +67,11 @@ public class Test : Dialogue
 
         await this.wait(1f);
 
+        GlobalVariables.Instance.PlayerIsStunned = false;
+
         await this.showContinue("...And then he killed him!");
+
+        GlobalVariables.Instance.PlayerIsStunned = true;
 
         end();
     }
