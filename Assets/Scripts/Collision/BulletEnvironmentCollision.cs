@@ -9,7 +9,7 @@ public class BulletEnvironmentCollision : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Environment"))
+        if (collision.gameObject.CompareTag("Environment") || collision.gameObject.CompareTag("Wall"))
         {
             GameObject go = Instantiate(dustParticles);
             go.transform.position = this.transform.position;

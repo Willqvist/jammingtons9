@@ -10,9 +10,6 @@ public class Test : Dialogue
     public Light2D globalLight;
     protected override async void dialogue()
     {
-        end();
-        EventDialogue.Instance.GetComponent<EasyDialogue>().BeginDialogue();
-        return;
 
         await this.showContinue("You see.. Gramps haven't always been as old as useless as he is now, you know, his story starts a long long time ago");
         ObjectActivator.Instance.player.SetActive(true);
@@ -77,15 +74,17 @@ public class Test : Dialogue
 
         await this.showContinue("...And then he killed him!");
 
-        GlobalVariables.Instance.PlayerIsStunned = false;
 
         await this.showContinue("After this more cops and other shenanigans just kept coming.. and coming... You'll see");
+        
+        Debug.Log("IM HERE DUDES!!");
 
-        await this.wait(2);
-
-        EventDialogue.Instance.GetComponent<EasyDialogue>().BeginDialogue();
+        GlobalVariables.Instance.PlayerIsStunned = false;
 
         end();
+        
+        EventDialogue.Instance.GetComponent<EasyDialogue>().BeginDialogue();
+
     }
 }
 

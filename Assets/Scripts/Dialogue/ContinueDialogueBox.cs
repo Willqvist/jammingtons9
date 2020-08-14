@@ -14,7 +14,7 @@ public class ContinueDialogueBox : MonoBehaviour
 
     private ContinueDialogueBox instance;
 
-    private Action callback;
+    private Action callback = null;
 
     private bool started;
 
@@ -41,7 +41,8 @@ public class ContinueDialogueBox : MonoBehaviour
         this.instance.nameField.text = name;
         this.instance.gameObject.SetActive(true);
         this.instance.continueField.SetActive(false);
-
+        
+        this.instance.callback = null;
         TypeWriter.Instance.Start(text, (callbackText) => 
         {
             //Update
@@ -52,9 +53,11 @@ public class ContinueDialogueBox : MonoBehaviour
 
     private void Update()
     {
-        if (this.instance.continueField.activeInHierarchy && Input.GetKeyDown(KeyCode.Z))
+        if (this.instance.continueField.activeInHierarchy && Input.GetKeyDown(KeyCode.Z) && this.callback != null)
         {
-            this.callback();
+            var cb = this.callback;
+            this.callback = null;
+            cb();
         }
 
         if (this.started && !this.instance.continueField.activeInHierarchy && Input.GetKeyDown(KeyCode.Z))
