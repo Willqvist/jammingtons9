@@ -18,6 +18,8 @@ public class PlayerMovement : MonoBehaviour
     public Collider2D collider;
     private Vector3 originalScale;
 
+    public Animator gun;
+
     private float horizontal;
 
     private bool falling = false;
@@ -46,6 +48,7 @@ public class PlayerMovement : MonoBehaviour
             this.horizontal = 0;
             this.rb.velocity = new Vector2(0, this.rb.velocity.y);
             this.animator.SetBool("walking", false);
+            gun.SetBool("walking",false);
             this.animator.ResetTrigger("jump");
             this.animator.ResetTrigger("fall");
             this.animator.ResetTrigger("down");
@@ -55,6 +58,7 @@ public class PlayerMovement : MonoBehaviour
         this.horizontal = Input.GetAxisRaw("Horizontal");
 
         this.animator.SetBool("walking", Mathf.Abs(this.horizontal) > 0);
+        gun.SetBool("walking", Mathf.Abs(this.horizontal) > 0);
 
         if(Input.GetKeyDown(KeyCode.Space) && (IsGrounded() || !doubleJump))
         {
@@ -128,7 +132,6 @@ public class PlayerMovement : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.tag.Equals("shell")) {
-            Debug.Log("COLLIDNG SHELL");
             Physics2D.IgnoreCollision(other.collider, collider); 
         }
     }

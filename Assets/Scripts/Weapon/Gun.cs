@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +10,12 @@ public class Gun : Weapon
     public float cooldownBetweenProjectiles;
 
     private bool startedTimer;
+    private Animator animator;
+
+    private void Start()
+    {
+        this.animator = GetComponent<Animator>();
+    }
 
     public bool Shoot(Vector2 shootDirection)
     {
@@ -16,7 +23,7 @@ public class Gun : Weapon
         {
             return false;
         }
-
+        this.animator.Play("Recoil",-1,0);
         GameObject go = Instantiate(this.projectile);
         go.transform.position = shootOrigin.position;
         go.GetComponent<DirectionHolder>().Direction = shootDirection;

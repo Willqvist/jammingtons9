@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerShoot : MonoBehaviour
 {
-    private Gun gun;
+    public Gun gun;
     public Gun Gun
     {
         get
