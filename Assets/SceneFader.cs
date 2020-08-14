@@ -34,7 +34,7 @@ public class SceneFader : MonoBehaviour
             if (group.alpha > 0.98)
             {
                 bloom.intensity.value = 0;
-                SceneManager.LoadScene("SampleScene");
+                SceneManager.LoadScene("Game");
             }
         }
     }
