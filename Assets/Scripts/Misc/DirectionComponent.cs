@@ -16,16 +16,16 @@ public class DirectionComponent : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (target.localScale.x > 0)
+        if(target.localScale.x > 0)
         {
             this.direction = Direction.RIGHT;
         }
 
-        if (target.localScale.x < 0)
+        if(target.localScale.x < 0)
         {
             this.direction = Direction.LEFT;
         }
-
+        
     }
 
     public Vector2 GetDirection()

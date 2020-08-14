@@ -10,11 +10,11 @@ public class Gun : Weapon
 
     private bool startedTimer;
 
-    public void Shoot(Vector2 shootDirection)
+    public bool Shoot(Vector2 shootDirection)
     {
         if(this.startedTimer == true)
         {
-            return;
+            return false;
         }
 
         GameObject go = Instantiate(this.projectile);
@@ -27,5 +27,6 @@ public class Gun : Weapon
         {
             this.startedTimer = false;
         });
+        return true;
     }
 }
