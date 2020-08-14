@@ -11,7 +11,9 @@ public class ChooseDialogueBox : MonoBehaviour
     public Button buttonPrefab;
 
     public RectTransform l, r;
-    
+
+    public Text content;
+
     private ChooseDialogueBox instance;
 
     private Action<string> callback;
@@ -22,6 +24,7 @@ public class ChooseDialogueBox : MonoBehaviour
     private float startTime = 0;
 
     private bool active = false;
+    private bool isFinishedWithTypewriter;
 
     [HideInInspector] public int selectedButtonIndex;
     [HideInInspector] public int maxButtons;
@@ -45,6 +48,16 @@ public class ChooseDialogueBox : MonoBehaviour
     {
         if (active)
         {
+            if (TypeWriter.Instance.IsFinished())
+            {
+                this.instance.layoutGroup.gameObject.SetActive(true);
+            }
+            else
+            {
+                TypeWriter.Instance.Update();
+                return;
+            }
+
             this.time -= Time.deltaTime;
             float percentComplete = this.time / startTime;
             scale.x = percentComplete;
@@ -61,7 +74,7 @@ public class ChooseDialogueBox : MonoBehaviour
                 return;
             }
 
-            if(Input.GetKeyDown(KeyCode.LeftArrow))
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 this.instance.selectedButtonIndex--;
                 if(this.instance.selectedButtonIndex <= 0)
@@ -103,8 +116,14 @@ public class ChooseDialogueBox : MonoBehaviour
     }
     
     // Start is called before the first frame update
-    public void show(string name,float time, params string[] msg)
+    public void show(string name,float time, string content, params string[] msg)
     {
+        TypeWriter.Instance.Start(content, (callbackText) =>
+        {
+            //Update
+            this.instance.content.text = callbackText;
+        });
+
         this.instance.selectedButtonIndex = 0;
         this.instance.buttons.Clear();
         this.instance.maxButtons = msg.Length;
@@ -130,7 +149,7 @@ public class ChooseDialogueBox : MonoBehaviour
             });
             this.instance.buttons.Add(b);
         }
-        
+        this.instance.layoutGroup.gameObject.SetActive(false);
     }
 
     public void onClick(Action<string> callback)

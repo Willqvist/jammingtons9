@@ -75,13 +75,24 @@ public class Dialogue : MonoBehaviour
         callbackWhenDone.Invoke();
     }
 
-    protected Task<string> showOptions(float secondsToChoose, params string[] options)
+    protected Task<string> wait(float seconds)
+    {
+        TaskCompletionSource<string> tcs1 = new TaskCompletionSource<string>();
+        Timer.Instance.StartTimer("Dialogue", seconds, () => 
+        {
+            tcs1.SetResult("true");
+        });
+
+        return tcs1.Task;
+    }
+
+    protected Task<string> showOptions(float secondsToChoose, string textBeforeOptions, params string[] options)
     {
         if(activeView != null)
             activeView.SetActive(false);
         activeView = choosePrefab.getInstance();
         TaskCompletionSource<string> tcs1 = new TaskCompletionSource<string>();
-        choosePrefab.show(npcName,secondsToChoose,options);
+        choosePrefab.show(npcName,secondsToChoose, textBeforeOptions,options);
         choosePrefab.onClick((val) =>
         {
             tcs1.SetResult(val);
@@ -111,6 +122,11 @@ public class Dialogue : MonoBehaviour
         return showContinue(/*audioProvider != null ? audioProvider():DialogueAudio.randomMaleSound()*/null,name, msg);
     }
     
+    protected void close()
+    {
+        activeView?.SetActive(false);
+    }
+
     protected Task showContinue(AudioSource audioSource, string name, string msg)
     {
         if(audioSource != null)

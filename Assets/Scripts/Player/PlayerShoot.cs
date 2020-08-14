@@ -4,12 +4,25 @@ using UnityEngine;
 
 public class PlayerShoot : MonoBehaviour
 {
-    public Gun gun;
+    private Gun gun;
+    public Gun Gun
+    {
+        get
+        {
+            return gun;
+        }
+        set
+        {
+            gun = value;
+            value.gameObject.SetActive(true);
+        }
+    }
+
     public DirectionComponent directionComponent;
     public GameObjectPool pool;
     void Update()
     {
-        if(GlobalVariables.Instance.PlayerIsStunned)
+        if(GlobalVariables.Instance.PlayerIsStunned || this.gun == null)
         {
             return;
         }
