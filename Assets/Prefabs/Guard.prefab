@@ -130,6 +130,8 @@ MonoBehaviour:
   screenShake: {fileID: 7443479458132420832, guid: 775859316c8e6c046bf5680003b5e9b5,
     type: 3}
   health: {fileID: 2120367154477812476}
+  headDeath: {fileID: 2736490051191072295, guid: 68f75fc7a4834cf488ab54d19260b155,
+    type: 3}
 --- !u!114 &2120367154477812476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -315,7 +317,7 @@ Animator:
   m_GameObject: {fileID: 2458260112941168294}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e4ee54691519c2d48a576e1d1e3cddf5, type: 2}
+  m_Controller: {fileID: 9100000, guid: a9042ddcbc54c9740b0e3e1eb59311e7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

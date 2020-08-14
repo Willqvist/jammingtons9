@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject landParticle;
 
     private Rigidbody2D rb;
+    public Collider2D collider;
     private Vector3 originalScale;
 
     private float horizontal;
@@ -100,6 +101,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector2 movement = new Vector2(horizontal * speed, rb.velocity.y);
         rb.velocity = movement;
+
     }
 
     void Jump()
@@ -118,5 +120,13 @@ public class PlayerMovement : MonoBehaviour
         }
 
         return false;
+    }
+    
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag.Equals("shell")) {
+            Debug.Log("COLLIDNG SHELL");
+            Physics2D.IgnoreCollision(other.collider, collider); 
+        }
     }
 }
