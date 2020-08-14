@@ -26,7 +26,7 @@ public class ScreenShake : MonoBehaviour
     {
         originalCameraPosition = Camera.main.transform.position;
 
-        Timer.Instance.StartTimer(duration, () => 
+        Timer.Instance.StartTimer("ScreenShake", duration, () => 
         {
             Camera.main.transform.position = originalCameraPosition;
             Destroy(this.gameObject);
