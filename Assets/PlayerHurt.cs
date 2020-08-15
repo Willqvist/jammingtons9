@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,6 +7,7 @@ public class PlayerHurt : Hurt
 {
     public GameObject explosion;
     public float gracePeriod = 1f;
+    public AudioSource playerHurt;
 
     bool can_be_hurt = true;
 
@@ -13,6 +15,8 @@ public class PlayerHurt : Hurt
     {
         if(can_be_hurt && (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Projectile"))
         {
+            if(playerHurt != null)
+                playerHurt.Play();
             GlobalVariables.Instance.PlayerHealth--;
             can_be_hurt = false;
             Timer.Instance.StartTimer("weweew", gracePeriod, () => 
@@ -34,6 +38,8 @@ public class PlayerHurt : Hurt
     {
         if (can_be_hurt && (collision.gameObject.tag == "Enemy" || collision.gameObject.name.StartsWith("Explosion")))
         {
+            if(playerHurt != null)
+                playerHurt.Play();
             GlobalVariables.Instance.PlayerHealth--;
             can_be_hurt = false;
             Timer.Instance.StartTimer("weweew", gracePeriod, () =>
@@ -45,6 +51,16 @@ public class PlayerHurt : Hurt
 
     public override void DealDamage(int damage)
     {
+        if(playerHurt != null)
+            playerHurt.Play();
         GlobalVariables.Instance.PlayerHealth -= 1;
+    }
+
+    private void Update()
+    {
+        if (GlobalVariables.Instance.PlayerHealth <= 0)
+        {
+         //TODO: END GAME HERE   
+        }
     }
 }

@@ -36,6 +36,7 @@ public class PlayerShoot : MonoBehaviour
                 var shell = pool.pull();
                 shell.transform.position = this.transform.position;
                 shell.transform.rotation = Quaternion.Euler(0,0,Random.value*360);
+                shell.GetComponent<SpriteRenderer>().sprite = gun.shellSprite;
                 var rb = shell.GetComponent<Rigidbody2D>();
                 rb.velocity = new Vector2(0, 0);
                 rb.AddTorque(22);

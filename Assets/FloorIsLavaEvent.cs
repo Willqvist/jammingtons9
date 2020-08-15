@@ -1,17 +1,23 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class FloorIsLavaEvent : MonoBehaviour
 {
     public GameObject lava;
-
+    private Vector3 orgPos = new Vector3();
     public GameObject lavaTarget;
     public GameObject screenshake;
     private ScreenShake inst;
 
     private bool eventHasStarted;
     private bool isLavaAtTop = false;
+
+    private void Start()
+    {
+        orgPos = lava.transform.position;
+    }
 
     public void StartEvent()
     {
@@ -22,6 +28,7 @@ public class FloorIsLavaEvent : MonoBehaviour
         f.intensity = 0.1f;
         f.radius = 0.5f;
         inst = f;
+        
     }
 
     private void Update()
@@ -33,9 +40,9 @@ public class FloorIsLavaEvent : MonoBehaviour
             lava.transform.position += new Vector3(0, 0.5f * Time.deltaTime);
         else
         {
-            Debug.Log("Haha");
-            if (!isLavaAtTop)
-                Destroy(inst.gameObject);
+            Destroy(inst.gameObject);
+            lava.transform.position = orgPos;
+            eventHasStarted = false;
             isLavaAtTop = true;
         }      
     }

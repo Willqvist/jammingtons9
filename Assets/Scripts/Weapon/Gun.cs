@@ -15,6 +15,7 @@ public class Gun : Weapon
     private Animator animator;
 
     private float pitch = 0;
+    public Sprite shellSprite;
 
     private void Start()
     {

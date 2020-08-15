@@ -29,8 +29,8 @@ public class ScreenShake : MonoBehaviour
 
     private void Update()
     {
-        screenShake += new Vector3(Random.Range(-radius * intensity, radius * intensity), Random.Range(-radius * intensity, radius * intensity), 0);
-        Camera.main.transform.position = new Vector3(follow.followY.position.x+Mathf.Clamp(screenShake.x, -radius, radius), follow.followY.position.y+Mathf.Clamp(screenShake.y, -radius, radius), Camera.main.transform.position.z);
+        screenShake = new Vector3(Random.Range(-radius * intensity, radius * intensity), Random.Range(-radius * intensity, radius * intensity), 0);
+        this.follow.transform.position = new Vector3(this.follow.transform.position.x+Mathf.Clamp(screenShake.x, -radius, radius), this.follow.transform.position.y+Mathf.Clamp(screenShake.y, -radius, radius), Camera.main.transform.position.z);
     }
 
     public void GetShotAtScreenShakeTemplate()

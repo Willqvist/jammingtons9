@@ -6,7 +6,7 @@ public class EventDialogue : Dialogue
 {
     private static EventDialogue instance;
     public static EventDialogue Instance => instance;
-
+    public AudioSource plopp;
     public CopsEventHandler copsEventHandler;
     public BarrelEventHandler barrelEventHandler;
     public UfoEventHandler ufoEventHandler;
@@ -45,60 +45,28 @@ public class EventDialogue : Dialogue
         if (rand == 0)
         {
             result = await this.showOptions(5f, this.text, cops, barrels, lava);
-            gun = await this.showOptions(5f, this.text1, ak47, pistol);
         }
 
         if (rand == 1)
         {
             result = await this.showOptions(5f, this.text, lava, alien);
-            gun = await this.showOptions(5f, this.text1, Bazooka);
         }
 
         if (rand == 2)
         {
             result = await this.showOptions(5f, this.text, cops, lava);
-            gun = await this.showOptions(5f, this.text1, Raygun);
         }
 
         if (rand == 3)
         {
             result = await this.showOptions(5f, this.text, lava);
-            gun = await this.showOptions(5f, this.text1, Bazooka);
         }
 
         if (rand == 4)
         {
             result = await this.showOptions(5f, this.text, alien);
-            gun = await this.showOptions(5f, this.text1, pistol);
         }
-
-        await this.showContinue("Oh and he ofcourse had a different gun because you know haha he loves them so much");
-
-        SpawnPosition.Haha = true;
-
-        if(gun != null)
-        {
-            if (gun.Equals(ak47))
-            {
-                PlayerWeaponLibrary.Instance.GiveGun(PlayerWeaponLibrary.Instance.Ak47);
-            }
-
-            if (gun.Equals(Raygun))
-            {
-                PlayerWeaponLibrary.Instance.GiveGun(PlayerWeaponLibrary.Instance.Raygun);
-            }
-
-            if (gun.Equals(Bazooka))
-            {
-                PlayerWeaponLibrary.Instance.GiveGun(PlayerWeaponLibrary.Instance.bazooka);
-            }
-
-            if(gun.Equals(pistol))
-            {
-                PlayerWeaponLibrary.Instance.GiveGun(PlayerWeaponLibrary.Instance.pistol);
-            }
-        }
-
+        plopp.Play();
         if(result != null)
         {
             if (result.Equals(cops))
@@ -121,6 +89,63 @@ public class EventDialogue : Dialogue
                 this.ufoEventHandler.StartEvent();
                 //EventMessage.Instance.ChangeEventMessage("ALIEN ATTACK");
                 SpawnPosition.stop = true;
+            }
+        }
+
+        if (!result.Equals(lava))
+        {
+            await this.showContinue(
+                "Oh and he ofcourse had a different gun because you know haha he loves them so much");
+
+            SpawnPosition.Haha = true;
+
+            if (rand == 0)
+            {
+                gun = await this.showOptions(5f, this.text1, ak47, pistol);
+            }
+
+            if (rand == 1)
+            {
+                gun = await this.showOptions(5f, this.text1, Bazooka);
+            }
+
+            if (rand == 2)
+            {
+                gun = await this.showOptions(5f, this.text1, Raygun);
+            }
+
+            if (rand == 3)
+            {
+                gun = await this.showOptions(5f, this.text1, Bazooka);
+            }
+
+            if (rand == 4)
+            {
+                gun = await this.showOptions(5f, this.text1, pistol);
+            }
+
+            plopp.Play();
+            if (gun != null)
+            {
+                if (gun.Equals(ak47))
+                {
+                    PlayerWeaponLibrary.Instance.GiveGun(PlayerWeaponLibrary.Instance.Ak47);
+                }
+
+                if (gun.Equals(Raygun))
+                {
+                    PlayerWeaponLibrary.Instance.GiveGun(PlayerWeaponLibrary.Instance.Raygun);
+                }
+
+                if (gun.Equals(Bazooka))
+                {
+                    PlayerWeaponLibrary.Instance.GiveGun(PlayerWeaponLibrary.Instance.bazooka);
+                }
+
+                if (gun.Equals(pistol))
+                {
+                    PlayerWeaponLibrary.Instance.GiveGun(PlayerWeaponLibrary.Instance.pistol);
+                }
             }
         }
 
