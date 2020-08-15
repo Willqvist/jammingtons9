@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 2120367154477812475}
   - component: {fileID: 2120367154477812474}
   - component: {fileID: 7992645540906329363}
+  - component: {fileID: 8926677456576356553}
   m_Layer: 12
   m_Name: Guard
   m_TagString: Enemy
@@ -56,8 +57,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectWithTagToBeHurtBy: Projectile
-  screenShake: {fileID: 7443479458132420832, guid: 775859316c8e6c046bf5680003b5e9b5,
-    type: 3}
   health: {fileID: 2120367154477812476}
   onHurt:
     m_PersistentCalls:
@@ -101,8 +100,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b29b126734d8717418971945a1fb269c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 25
-  currentHealth: 2
+  maxHealth: 3
+  currentHealth: 3
 --- !u!114 &8243554453394812067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,6 +145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 5865015960606437193}
   jumpForce: 8
+  movespeed: 3.5
 --- !u!114 &1001937632607212573
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,11 +186,11 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 100
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 98024059e9c92f64894d2cfa366a6cce, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -253,6 +253,18 @@ MonoBehaviour:
   m_ShapePathHash: -1140034949
   m_Mesh: {fileID: 0}
   m_InstanceId: 72676
+--- !u!114 &8926677456576356553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2120367154477812454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ce1399992c45a74583d6559ad7047d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2458260112941168294
 GameObject:
   m_ObjectHideFlags: 0

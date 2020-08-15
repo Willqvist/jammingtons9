@@ -11,6 +11,7 @@ TagManager:
   - Environment
   - shell
   - Wall
+  - Barrel
   layers:
   - Default
   - TransparentFX

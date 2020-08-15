@@ -31,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
     {
         this.rb = this.GetComponent<Rigidbody2D>();
         this.originalScale = this.transform.localScale;
+        
     }
 
     void Update()
@@ -48,7 +49,8 @@ public class PlayerMovement : MonoBehaviour
             this.horizontal = 0;
             this.rb.velocity = new Vector2(0, this.rb.velocity.y);
             this.animator.SetBool("walking", false);
-            gun.SetBool("walking",false);
+            if(gun != null)
+                gun.SetBool("walking",false);
             this.animator.ResetTrigger("jump");
             this.animator.ResetTrigger("fall");
             this.animator.ResetTrigger("down");
@@ -58,7 +60,8 @@ public class PlayerMovement : MonoBehaviour
         this.horizontal = Input.GetAxisRaw("Horizontal");
 
         this.animator.SetBool("walking", Mathf.Abs(this.horizontal) > 0);
-        gun.SetBool("walking", Mathf.Abs(this.horizontal) > 0);
+        if (gun != null)
+            gun.SetBool("walking", Mathf.Abs(this.horizontal) > 0);
 
         if(Input.GetKeyDown(KeyCode.Space) && (IsGrounded() || !doubleJump))
         {
@@ -122,15 +125,20 @@ public class PlayerMovement : MonoBehaviour
     
     void DoubleJump()
     {
-        Vector2 movement = new Vector2(rb.velocity.x, jumpForce*1.5f);
+        Vector2 movement = new Vector2(rb.velocity.x, jumpForce*1.15f);
         rb.velocity = movement;
     }
 
     public bool IsGrounded()
     {
-        Collider2D groundCheck = Physics2D.OverlapCircle(this.feet.transform.position, 0.05f, groundLayer);
+        Collider2D[] groundCheck = Physics2D.OverlapCircleAll(this.feet.transform.position, 0.05f, groundLayer);
 
-        if(groundCheck?.gameObject != null)
+        if(groundCheck == null)
+        {
+            return false;
+        }
+
+        if(groundCheck.Length > 0)
         {
             return true;
         }

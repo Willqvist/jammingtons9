@@ -10,6 +10,6 @@ public class OnBazookaProjectileCollision : MonoBehaviour
     {
         GameObject go = Instantiate(explosion);
         go.transform.position = this.transform.position;
-        go.GetComponent<DamageDealer>().Damage = this.GetComponent<DamageDealer>().Damage;
+        go.GetComponent<DamageDealer>().Damage = this.GetComponent<DamageDealer>().Damage / 2;
     }
 }

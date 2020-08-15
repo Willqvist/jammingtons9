@@ -7,9 +7,11 @@ public class AIFollowPlayer : MonoBehaviour
 {
     public Animator animator;
     public float jumpForce;
+    public float movespeed = 1f;
 
     private DirectionHolder directionHolder;
     private Rigidbody2D rb;
+    private float jumpTimer = 15f;
 
     private void Start()
     {
@@ -23,8 +25,24 @@ public class AIFollowPlayer : MonoBehaviour
 
     private void Update()
     {
-        this.rb.velocity = new Vector2(5 * this.directionHolder.Direction.x, this.rb.velocity.y);
+        if(GlobalVariables.Instance.GameIsPaused)
+        {
+            this.rb.velocity = new Vector2(0, rb.velocity.y);
+            return;
+        }
 
+        jumpTimer -= Time.deltaTime;
+        if(jumpTimer <= 0)
+        {
+            Jump();
+            jumpTimer = 15f;
+        }
+        this.rb.velocity = new Vector2(movespeed * this.directionHolder.Direction.x, this.rb.velocity.y);
+
+
+        //Jump when player is above
+
+        /*
         var hits = Physics2D.RaycastAll(this.transform.position, Vector2.up);
 
         foreach(var hit in hits)
@@ -35,10 +53,11 @@ public class AIFollowPlayer : MonoBehaviour
             }
         }
 
-        if(Random.Range(0, (10000f * 1.2f)) < 10)
+        if(Random.Range(0, (10000f * 1.5f)) < 10)
         {
             Jump();
         }
+        */
     }
 
     void Jump()
@@ -52,6 +71,22 @@ public class AIFollowPlayer : MonoBehaviour
         if (collision.gameObject.CompareTag("Wall"))
         {
             this.directionHolder.Direction = -this.directionHolder.Direction;
+        }
+        if(collision.gameObject.CompareTag("Barrel"))
+        {
+            Jump();
+        }
+        if (collision.gameObject.tag.Equals("shell"))
+        {
+            Physics2D.IgnoreCollision(collision.collider, this.GetComponent<BoxCollider2D>());
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            Jump();
         }
     }
 }

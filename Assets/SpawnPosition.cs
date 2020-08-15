@@ -7,6 +7,24 @@ public class SpawnPosition : MonoBehaviour
     public GameObject[] mobPool;
     private bool shouldSpawn = false;
 
+    private static bool haha = false;
+    public static bool Haha { get { return haha; } set { haha = value; } }
+
+    private bool haha_2;
+
+    private void Start()
+    {   
+    }
+
+    private void Update()
+    {
+        if(Haha && !haha_2)
+        {
+            SpawnLoop_2();
+            haha_2 = true;
+        }
+    }
+
     public void StartSpawning()
     {
         if(this.mobPool.Length <= 0)
@@ -16,7 +34,7 @@ public class SpawnPosition : MonoBehaviour
 
         shouldSpawn = true;
 
-        Timer.Instance.StartTimer("SpawnPosition_2", 20f, () => 
+        Timer.Instance.StartTimer("SpawnPosition_2", CopsEventHandler.spawnTime, () => 
         {
             shouldSpawn = false;
         });
@@ -26,13 +44,27 @@ public class SpawnPosition : MonoBehaviour
 
     private void SpawnLoop()
     {
+        for(int i = 0; i < CopsEventHandler.multiplier; i++)
+        {
+            Timer.Instance.StartTimer("SpawnPosition", Random.Range(2, 5), () =>
+            {
+                GameObject go = Instantiate(this.mobPool[Random.Range(0, this.mobPool.Length - 1)]);
+                go.transform.position = this.transform.position;
+
+                if (this.shouldSpawn)
+                    this.SpawnLoop();
+            });
+        }
+    }
+
+    private void SpawnLoop_2()
+    {
         Timer.Instance.StartTimer("SpawnPosition", Random.Range(5, 10), () =>
         {
             GameObject go = Instantiate(this.mobPool[Random.Range(0, this.mobPool.Length - 1)]);
             go.transform.position = this.transform.position;
-            
-            if(this.shouldSpawn)
-                this.SpawnLoop();
+
+            this.SpawnLoop_2();
         });
     }
 }

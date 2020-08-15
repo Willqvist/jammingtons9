@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3927067278709006138}
   m_Layer: 10
   m_Name: copHead
-  m_TagString: Environment
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

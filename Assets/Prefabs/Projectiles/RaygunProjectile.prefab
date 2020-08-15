@@ -147,6 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bee80a34e4739f24eaf2b88bc784c367, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timerName: player
   lineRenderer: {fileID: -6010159141219905441}
   duration: 0.2
 --- !u!114 &7983711112885573170
@@ -206,6 +207,7 @@ MonoBehaviour:
     m_Bits: 512
   tagsToTarget:
   - Enemy
+  - Barrel
   onHit:
     m_PersistentCalls:
       m_Calls:

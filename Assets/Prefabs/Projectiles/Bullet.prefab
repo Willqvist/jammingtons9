@@ -118,7 +118,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee4f8d1bf6eba4c41860c13fd6dab8d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetTag: Enemy
+  targetTags:
+  - Enemy
+  onDestroy:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!212 &2236630032678501411
 SpriteRenderer:
   m_ObjectHideFlags: 0
