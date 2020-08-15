@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SpawnPosition : MonoBehaviour
 {
+    public static bool stop = false;
     public GameObject[] mobPool;
     private bool shouldSpawn = false;
 
@@ -11,10 +12,6 @@ public class SpawnPosition : MonoBehaviour
     public static bool Haha { get { return haha; } set { haha = value; } }
 
     private bool haha_2;
-
-    private void Start()
-    {   
-    }
 
     private void Update()
     {
@@ -48,8 +45,11 @@ public class SpawnPosition : MonoBehaviour
         {
             Timer.Instance.StartTimer("SpawnPosition", Random.Range(2, 5), () =>
             {
-                GameObject go = Instantiate(this.mobPool[Random.Range(0, this.mobPool.Length - 1)]);
-                go.transform.position = this.transform.position;
+                if(!stop)
+                {
+                    GameObject go = Instantiate(this.mobPool[Random.Range(0, this.mobPool.Length - 1)]);
+                    go.transform.position = this.transform.position;
+                }
 
                 if (this.shouldSpawn)
                     this.SpawnLoop();
@@ -61,8 +61,11 @@ public class SpawnPosition : MonoBehaviour
     {
         Timer.Instance.StartTimer("SpawnPosition", Random.Range(5, 10), () =>
         {
-            GameObject go = Instantiate(this.mobPool[Random.Range(0, this.mobPool.Length - 1)]);
-            go.transform.position = this.transform.position;
+            if(!stop)
+            {
+                GameObject go = Instantiate(this.mobPool[Random.Range(0, this.mobPool.Length - 1)]);
+                go.transform.position = this.transform.position;
+            }
 
             this.SpawnLoop_2();
         });

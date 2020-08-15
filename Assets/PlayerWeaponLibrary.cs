@@ -10,6 +10,7 @@ public class PlayerWeaponLibrary : MonoBehaviour
     public Gun Ak47;
     public Gun Raygun;
     public Gun bazooka;
+    public Gun pistol;
 
     private void Awake()
     {

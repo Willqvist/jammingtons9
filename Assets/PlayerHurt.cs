@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHurt : MonoBehaviour
+public class PlayerHurt : Hurt
 {
     public GameObject explosion;
     public float gracePeriod = 1f;
@@ -41,5 +41,10 @@ public class PlayerHurt : MonoBehaviour
                 can_be_hurt = true;
             });
         }
+    }
+
+    public override void DealDamage(int damage)
+    {
+        GlobalVariables.Instance.PlayerHealth -= 1;
     }
 }

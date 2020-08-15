@@ -18,7 +18,7 @@ public class Hurt : MonoBehaviour
         }
     }
 
-    public void DealDamage(int damage)
+    public virtual void DealDamage(int damage)
     {
         if(this.health != null)
         {

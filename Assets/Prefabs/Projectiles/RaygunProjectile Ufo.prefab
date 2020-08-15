@@ -206,8 +206,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 768
   tagsToTarget:
-  - Enemy
+  - Player
   - Barrel
+  - Enemy
   onHit:
     m_PersistentCalls:
       m_Calls:
