@@ -56,11 +56,16 @@ public class PlayerHurt : Hurt
         GlobalVariables.Instance.PlayerHealth -= 1;
     }
 
+    private bool faded = false;
+    
     private void Update()
     {
-        if (GlobalVariables.Instance.PlayerHealth <= 0)
+        if (GlobalVariables.Instance.PlayerHealth <= 0 && !faded)
         {
+            GlobalVariables.Instance.GameIsPaused = true;
          //TODO: END GAME HERE   
+         EndRoundHandler.instance.StartEnding();
+         faded = true;
         }
     }
 }

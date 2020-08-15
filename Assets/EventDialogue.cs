@@ -35,121 +35,125 @@ public class EventDialogue : Dialogue
         SpawnPosition.stop = false;
         GlobalVariables.Instance.GameIsPaused = true;
 
-        var rand = Random.Range((int)0, (int)3);
+            var rand = Random.Range((int) 0, (int) 3);
 
-        await this.showContinue("Oh and you know, you know what happened next");
+            await this.showContinue("Oh and you know, you know what happened next");
 
-        var result = "";
-        var gun = "";
-
-        if (rand == 0)
-        {
-            result = await this.showOptions(5f, this.text, cops, barrels, lava);
-        }
-
-        if (rand == 1)
-        {
-            result = await this.showOptions(5f, this.text, lava, alien);
-        }
-
-        if (rand == 2)
-        {
-            result = await this.showOptions(5f, this.text, cops, lava);
-        }
-
-        if (rand == 3)
-        {
-            result = await this.showOptions(5f, this.text, lava);
-        }
-
-        if (rand == 4)
-        {
-            result = await this.showOptions(5f, this.text, alien);
-        }
-        plopp.Play();
-        if(result != null)
-        {
-            if (result.Equals(cops))
-            {
-                this.copsEventHandler.StartEventHandler();
-                //EventMessage.Instance.ChangeEventMessage("COPS INBOUND!");
-            }
-            if (result.Equals(barrels))
-            {
-                this.barrelEventHandler.StartEventHandler();
-                //EventMessage.Instance.ChangeEventMessage("BaRreLs");
-            }
-            if (result.Equals(lava))
-            {
-                floorIsLavaEventHandler.StartEvent();
-                SpawnPosition.stop = true;
-            }
-            if(result.Equals(alien))
-            {
-                this.ufoEventHandler.StartEvent();
-                //EventMessage.Instance.ChangeEventMessage("ALIEN ATTACK");
-                SpawnPosition.stop = true;
-            }
-        }
-
-        if (!result.Equals(lava))
-        {
-            await this.showContinue(
-                "Oh and he ofcourse had a different gun because you know haha he loves them so much");
-
-            SpawnPosition.Haha = true;
+            var result = "";
+            var gun = "";
 
             if (rand == 0)
             {
-                gun = await this.showOptions(5f, this.text1, ak47, pistol);
+                result = await this.showOptions(5f, this.text, cops, barrels, lava);
             }
 
             if (rand == 1)
             {
-                gun = await this.showOptions(5f, this.text1, Bazooka);
+                result = await this.showOptions(5f, this.text, lava, alien);
             }
 
             if (rand == 2)
             {
-                gun = await this.showOptions(5f, this.text1, Raygun);
+                result = await this.showOptions(5f, this.text, cops, lava);
             }
 
             if (rand == 3)
             {
-                gun = await this.showOptions(5f, this.text1, Bazooka);
+                result = await this.showOptions(5f, this.text, lava);
             }
 
             if (rand == 4)
             {
-                gun = await this.showOptions(5f, this.text1, pistol);
+                result = await this.showOptions(5f, this.text, alien);
             }
 
             plopp.Play();
-            if (gun != null)
+            if (result != null)
             {
-                if (gun.Equals(ak47))
+                if (result.Equals(cops))
                 {
-                    PlayerWeaponLibrary.Instance.GiveGun(PlayerWeaponLibrary.Instance.Ak47);
+                    this.copsEventHandler.StartEventHandler();
+                    //EventMessage.Instance.ChangeEventMessage("COPS INBOUND!");
                 }
 
-                if (gun.Equals(Raygun))
+                if (result.Equals(barrels))
                 {
-                    PlayerWeaponLibrary.Instance.GiveGun(PlayerWeaponLibrary.Instance.Raygun);
+                    this.barrelEventHandler.StartEventHandler();
+                    //EventMessage.Instance.ChangeEventMessage("BaRreLs");
                 }
 
-                if (gun.Equals(Bazooka))
+                if (result.Equals(lava))
                 {
-                    PlayerWeaponLibrary.Instance.GiveGun(PlayerWeaponLibrary.Instance.bazooka);
+                    floorIsLavaEventHandler.StartEvent();
+                    SpawnPosition.stop = true;
                 }
 
-                if (gun.Equals(pistol))
+                if (result.Equals(alien))
                 {
-                    PlayerWeaponLibrary.Instance.GiveGun(PlayerWeaponLibrary.Instance.pistol);
+                    this.ufoEventHandler.StartEvent();
+                    //EventMessage.Instance.ChangeEventMessage("ALIEN ATTACK");
+                    SpawnPosition.stop = true;
                 }
             }
-        }
 
-        end();
+            if (!result.Equals(lava))
+            {
+                await this.showContinue(
+                    "Oh and he ofcourse had a different gun because you know haha he loves them so much");
+
+                SpawnPosition.Haha = true;
+
+                if (rand == 0)
+                {
+                    gun = await this.showOptions(5f, this.text1, ak47, pistol);
+                }
+
+                if (rand == 1)
+                {
+                    gun = await this.showOptions(5f, this.text1, Bazooka);
+                }
+
+                if (rand == 2)
+                {
+                    gun = await this.showOptions(5f, this.text1, Raygun);
+                }
+
+                if (rand == 3)
+                {
+                    gun = await this.showOptions(5f, this.text1, Bazooka);
+                }
+
+                if (rand == 4)
+                {
+                    gun = await this.showOptions(5f, this.text1, pistol);
+                }
+
+                plopp.Play();
+                if (gun != null)
+                {
+                    if (gun.Equals(ak47))
+                    {
+                        PlayerWeaponLibrary.Instance.GiveGun(PlayerWeaponLibrary.Instance.Ak47);
+                    }
+
+                    if (gun.Equals(Raygun))
+                    {
+                        PlayerWeaponLibrary.Instance.GiveGun(PlayerWeaponLibrary.Instance.Raygun);
+                    }
+
+                    if (gun.Equals(Bazooka))
+                    {
+                        PlayerWeaponLibrary.Instance.GiveGun(PlayerWeaponLibrary.Instance.bazooka);
+                    }
+
+                    if (gun.Equals(pistol))
+                    {
+                        PlayerWeaponLibrary.Instance.GiveGun(PlayerWeaponLibrary.Instance.pistol);
+                    }
+                }
+            }
+
+            end();
 
         GlobalVariables.Instance.GameIsPaused = false;
 
