@@ -13,7 +13,9 @@ public class PlayerMovement : MonoBehaviour
     public Animator animator;
     public GameObject doubleJumpParticle;
     public GameObject landParticle;
-
+    public AudioSource walkAudio;
+    public AudioSource jumpAudio;
+    public float stepSoundDelay = 1;
     private Rigidbody2D rb;
     public Collider2D collider;
     private Vector3 originalScale;
@@ -24,14 +26,28 @@ public class PlayerMovement : MonoBehaviour
 
     private bool falling = false;
 
+    private bool isWalking = false;
+
     private bool lastFrameGrounded = false;
     private bool doubleJump = false;
 
+    private float pitch = 0,jumpPitch=0;
+
+    private float walkTime = 0;
+    
     void Start()
     {
         this.rb = this.GetComponent<Rigidbody2D>();
         this.originalScale = this.transform.localScale;
-        
+        this.pitch = walkAudio.pitch;
+        jumpPitch = jumpAudio.pitch;
+    }
+    
+    void PlayWalkSound()
+    {
+        walkAudio.pitch = pitch + ((Random.value * 2) - 1)*0.1f;
+        walkAudio.Play();
+        walkTime = 0;
     }
 
     void Update()
@@ -39,6 +55,7 @@ public class PlayerMovement : MonoBehaviour
         if (IsGrounded() && !lastFrameGrounded)
         {
             this.animator.SetTrigger("down");
+            PlayWalkSound();
             this.animator.ResetTrigger("jump");
             this.animator.ResetTrigger("fall");
             falling = false;
@@ -46,6 +63,7 @@ public class PlayerMovement : MonoBehaviour
 
         if(GlobalVariables.Instance.PlayerIsStunned)
         {
+            isWalking = false;
             this.horizontal = 0;
             this.rb.velocity = new Vector2(0, this.rb.velocity.y);
             this.animator.SetBool("walking", false);
@@ -54,12 +72,34 @@ public class PlayerMovement : MonoBehaviour
             this.animator.ResetTrigger("jump");
             this.animator.ResetTrigger("fall");
             this.animator.ResetTrigger("down");
+            jumpAudio.Stop();
+            walkAudio.Stop();
             return;
         }
 
         this.horizontal = Input.GetAxisRaw("Horizontal");
 
         this.animator.SetBool("walking", Mathf.Abs(this.horizontal) > 0);
+        if (Mathf.Abs(this.horizontal) > 0 && !isWalking)
+        {
+            isWalking = true;
+            PlayWalkSound();
+            //walkAudio.Play();
+        }
+        else if(Mathf.Abs(this.horizontal) <= 0 && isWalking && IsGrounded())
+        {
+            walkTime = 0;
+            isWalking = false;
+            //walkAudio.Stop();
+        }
+
+        if (isWalking && walkTime > stepSoundDelay && IsGrounded())
+        {
+            PlayWalkSound();
+        }
+
+        walkTime += Time.deltaTime;
+
         if (gun != null)
             gun.SetBool("walking", Mathf.Abs(this.horizontal) > 0);
 
@@ -67,6 +107,8 @@ public class PlayerMovement : MonoBehaviour
         {
             this.animator.SetTrigger("jump");
             this.animator.ResetTrigger("down");
+            isWalking = false;
+            walkAudio.Stop();
             if(!IsGrounded() && !doubleJump)
             {
                 doubleJump = true;
@@ -121,12 +163,16 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector2 movement = new Vector2(rb.velocity.x, jumpForce);
         rb.velocity = movement;
+        jumpAudio.pitch = jumpPitch + ((Random.value * 2) - 1)*0.08f;
+        jumpAudio.Play();
     }
     
     void DoubleJump()
     {
         Vector2 movement = new Vector2(rb.velocity.x, jumpForce*1.15f);
         rb.velocity = movement;
+        jumpAudio.pitch = jumpPitch + ((Random.value * 2) - 1)*0.08f;
+        jumpAudio.Play();
     }
 
     public bool IsGrounded()

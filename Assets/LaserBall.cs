@@ -8,7 +8,6 @@ public class LaserBall : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("wew");
         this.GetComponent<Animator>().Play("LaserBallAnimation");
     }
 

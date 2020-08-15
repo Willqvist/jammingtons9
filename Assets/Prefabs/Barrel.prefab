@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6256532934093700097}
   - component: {fileID: 6256532934093700096}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: New Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,8 +71,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 54
-  m_Sprite: {fileID: -7689382371589266427, guid: 4f34a075f1324134b802fbdadf00235a,
-    type: 3}
+  m_Sprite: {fileID: 21300000, guid: b1524d6d2381ee046a3cf78a1c1e5905, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -96,6 +95,7 @@ GameObject:
   - component: {fileID: 6256532935358190282}
   - component: {fileID: 6256532935358190283}
   - component: {fileID: 6256532935358190277}
+  - component: {fileID: -6960568055423618325}
   m_Layer: 8
   m_Name: Barrel
   m_TagString: Barrel
@@ -166,7 +166,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.028925508, y: 0.10743737}
+  m_Offset: {x: 0.021194756, y: -0.0007767081}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -177,7 +177,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.49587017, y: 0.78512526}
+  m_Size: {x: 0.6280054, y: 0.6689373}
   m_EdgeRadius: 0
 --- !u!114 &6256532935358190277
 MonoBehaviour:
@@ -208,6 +208,33 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: -6960568055423618325}
+        m_TargetAssemblyTypeName: BarrelCreateExplosionAudio, Assembly-CSharp
+        m_MethodName: CreateAudio
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onDeath:
     m_PersistentCalls:
       m_Calls: []
+  source: {fileID: 0}
+--- !u!114 &-6960568055423618325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6256532935358190286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0a751110ab3e374a91500aae5742247, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioPrefab: {fileID: 516917986818001100, guid: 7f8e3b4eba17a74419fb4918046a65a3,
+    type: 3}
