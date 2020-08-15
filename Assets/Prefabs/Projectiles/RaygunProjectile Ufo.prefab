@@ -149,7 +149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerName: ufo
   lineRenderer: {fileID: -6010159141219905441}
-  duration: 0.8
+  duration: 0.4
 --- !u!114 &7983711112885573170
 MonoBehaviour:
   m_ObjectHideFlags: 0

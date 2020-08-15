@@ -1,7 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using Random = UnityEngine.Random;
 
 public class Hurt : MonoBehaviour
 {
@@ -9,6 +11,18 @@ public class Hurt : MonoBehaviour
     public Health health;
     public UnityEvent onHurt;
     public UnityEvent onDeath;
+    public HurtAudioSource source;
+
+    private HurtAudioSource inst;
+    
+    private void Start()
+    {
+        if (source != null)
+        {
+            inst = Instantiate(source);
+            inst.setup(this);
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -26,11 +40,12 @@ public class Hurt : MonoBehaviour
 
             if (this.health.currentHealth <= 0)
             {
-                Destroy(this.gameObject);
                 this.onDeath.Invoke();
+                Destroy(this.gameObject);
             }
         }
-
+        if(inst != null)
+            inst.Play();
         this.onHurt.Invoke();
    
     }

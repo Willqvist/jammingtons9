@@ -6,7 +6,7 @@ public class UfoShoot : MonoBehaviour
 {
     public Gun gun;
     public GameObject splat;
-
+    public AudioSource shootAudio;
     private void Start()
     {
         StartTimer();
@@ -23,7 +23,8 @@ public class UfoShoot : MonoBehaviour
     {
         gun.Shoot(Vector2.down);
         StartTimer();
-        Debug.Log("Wew");
+        shootAudio.Play();
+        //Debug.Log("Wew");
     }
 
     public void Splat()
