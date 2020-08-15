@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 617c1b4a1433dca459ac02c96eccf8eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponData: {fileID: 11400000, guid: bc461c7cbc3db9b4bae872541ac1ee49, type: 2}
+  weaponData: {fileID: 11400000, guid: d4eaa68ce516fae4881080e3f282ae91, type: 2}
   projectile: {fileID: 4193174340979475497, guid: 307b77df7a54d554d832cd0375b23bc4,
     type: 3}
   shootOrigin: {fileID: 6829213537652862830}

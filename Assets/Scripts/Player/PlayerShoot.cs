@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerShoot : MonoBehaviour
 {
-    public Gun gun;
+    public Gun gun = null;
     public Gun Gun
     {
         get
@@ -13,6 +13,8 @@ public class PlayerShoot : MonoBehaviour
         }
         set
         {
+            if(gun != null)
+                gun.gameObject.SetActive(false);
             gun = value;
             value.gameObject.SetActive(true);
         }

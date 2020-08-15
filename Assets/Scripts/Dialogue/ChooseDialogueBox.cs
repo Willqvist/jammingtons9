@@ -75,7 +75,8 @@ public class ChooseDialogueBox : MonoBehaviour
             if (this.time <= 0)
             {
                 active = false;
-                this.instance.callback(null);
+                this.instance.buttons[this.instance.selectedButtonIndex].onClick.Invoke();
+                //this.instance.callback(null);
             }
 
             if(maxButtons == 0)

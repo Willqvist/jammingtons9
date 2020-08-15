@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class LineRendererThinOverTime : MonoBehaviour
 {
+    public string timerName;
     public LineRenderer lineRenderer;
     public float duration;
 
     private void Start()
     {
-        Timer.Instance.StartTimer("LineRendererThinOverTime", this.duration, () =>
+        Timer.Instance.StartTimer(timerName, this.duration, () =>
         {
             Destroy(this.gameObject);
         });
@@ -17,7 +18,7 @@ public class LineRendererThinOverTime : MonoBehaviour
 
     private void Update()
     {
-        this.lineRenderer.startWidth = Timer.Instance.GetTimer("LineRendererThinOverTime").duration;
+        this.lineRenderer.startWidth = Timer.Instance.GetTimer(timerName).duration;
         this.lineRenderer.endWidth = this.lineRenderer.startWidth;
     }
 }

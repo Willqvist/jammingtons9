@@ -6,7 +6,6 @@ using UnityEngine.Events;
 public class Hurt : MonoBehaviour
 {
     public string objectWithTagToBeHurtBy = "Projectile";
-    public GameObject screenShake;
     public Health health;
     public UnityEvent onHurt;
     public UnityEvent onDeath;
@@ -21,16 +20,18 @@ public class Hurt : MonoBehaviour
 
     public void DealDamage(int damage)
     {
-        this.health.RemoveHealth(damage);
-
-        if (this.health.currentHealth <= 0)
+        if(this.health != null)
         {
-            Destroy(this.gameObject);
-            this.onDeath.Invoke();
+            this.health.RemoveHealth(damage);
+
+            if (this.health.currentHealth <= 0)
+            {
+                Destroy(this.gameObject);
+                this.onDeath.Invoke();
+            }
         }
 
         this.onHurt.Invoke();
-
-        
+   
     }
 }

@@ -46,11 +46,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 617c1b4a1433dca459ac02c96eccf8eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponData: {fileID: 11400000, guid: bc461c7cbc3db9b4bae872541ac1ee49, type: 2}
+  weaponData: {fileID: 11400000, guid: 1bd361f5f05f4c34ba50616d7080ce3a, type: 2}
   projectile: {fileID: 2236630032678501420, guid: 7315567479842d84bb852bead753ac97,
     type: 3}
   shootOrigin: {fileID: 6167617725014045344}
-  cooldownBetweenProjectiles: 2
+  cooldownBetweenProjectiles: 1
 --- !u!212 &6167617724605334469
 SpriteRenderer:
   m_ObjectHideFlags: 0

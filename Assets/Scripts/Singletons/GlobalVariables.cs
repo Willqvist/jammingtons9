@@ -8,9 +8,12 @@ public class GlobalVariables : MonoBehaviour
     public static GlobalVariables Instance => instance;
 
     public bool PlayerIsStunned { get; set; }
+    public bool GameIsPaused { get; set; }
+    public int PlayerHealth { get; set; }
 
     private void Awake()
     {
         instance = this;
+        GlobalVariables.Instance.PlayerHealth = 3;
     }
 }

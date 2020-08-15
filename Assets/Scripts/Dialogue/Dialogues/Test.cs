@@ -10,6 +10,9 @@ public class Test : Dialogue
     public Light2D globalLight;
     protected override async void dialogue()
     {
+        end();
+        EventDialogue.Instance.GetComponent<EasyDialogue>().BeginDialogue();
+        return;
 
         await this.showContinue("You see.. Gramps haven't always been as old as useless as he is now, you know, his story starts a long long time ago");
         ObjectActivator.Instance.player.SetActive(true);
