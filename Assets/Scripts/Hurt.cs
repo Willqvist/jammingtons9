@@ -40,6 +40,7 @@ public class Hurt : MonoBehaviour
 
             if (this.health.currentHealth <= 0)
             {
+                Debug.Log("DEATH");
                 this.onDeath.Invoke();
                 Destroy(this.gameObject);
             }

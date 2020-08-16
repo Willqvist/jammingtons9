@@ -13,7 +13,7 @@ public class PlayerHurt : Hurt
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(can_be_hurt && (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Projectile"))
+        if(can_be_hurt && (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Projectile") || collision.gameObject.tag.Equals("ufo"))
         {
             if(playerHurt != null)
                 playerHurt.Play();
@@ -36,7 +36,7 @@ public class PlayerHurt : Hurt
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (can_be_hurt && (collision.gameObject.tag == "Enemy" || collision.gameObject.name.StartsWith("Explosion")))
+        if (can_be_hurt && (collision.gameObject.tag == "Enemy" || collision.gameObject.name.StartsWith("Explosion")) || collision.gameObject.tag.Equals("ufo"))
         {
             if(playerHurt != null)
                 playerHurt.Play();

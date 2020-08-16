@@ -10,7 +10,7 @@ public class Lava : MonoBehaviour
         {
             GlobalVariables.Instance.PlayerHealth = 0;
         }
-        if (collision.gameObject.tag.Equals("Enemy"))
+        if (collision.gameObject.tag.Equals("Enemy") || collision.gameObject.tag.Equals("ufo"))
         {
             Debug.Log("IM HERE");
             collision.gameObject.GetComponent<Hurt>().DealDamage(100000000);

@@ -13,10 +13,22 @@ public class AIFollowPlayer : MonoBehaviour
     private Rigidbody2D rb;
     private float jumpTimer = 15f;
 
+    private int choose(int a, int b)
+    {
+        if(Random.Range(0, 2) == 0)
+        {
+            return a;
+        }
+        else
+        {
+            return b;
+        }
+    }
+
     private void Start()
     {
         this.directionHolder = this.GetComponent<DirectionHolder>();
-        this.directionHolder.Direction = new Vector2(1, 0);
+        this.directionHolder.Direction = new Vector2(choose(-1, 1), 0);
 
         this.rb = this.GetComponent<Rigidbody2D>();
 

@@ -12,6 +12,7 @@ TagManager:
   - shell
   - Wall
   - Barrel
+  - ufo
   layers:
   - Default
   - TransparentFX

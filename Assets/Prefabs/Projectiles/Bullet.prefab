@@ -121,6 +121,7 @@ MonoBehaviour:
   targetTags:
   - Enemy
   - Barrel
+  - ufo
   onDestroy:
     m_PersistentCalls:
       m_Calls: []

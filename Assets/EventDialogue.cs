@@ -42,13 +42,18 @@ public class EventDialogue : Dialogue
             var result = "";
             var gun = "";
 
+            if((rand == 1 || rand == 4) && GameObject.FindGameObjectsWithTag("ufo").Length > 0)
+            {
+            rand = 0;
+            }
+
             if (rand == 0)
             {
                 result = await this.showOptions(5f, this.text, cops, barrels, lava);
             }
 
             if (rand == 1)
-            {
+            { 
                 result = await this.showOptions(5f, this.text, lava, alien);
             }
 
@@ -81,7 +86,7 @@ public class EventDialogue : Dialogue
                 {
                     this.barrelEventHandler.StartEventHandler();
                     //EventMessage.Instance.ChangeEventMessage("BaRreLs");
-                    startNext(15);
+                    startNext(8);
                 }
 
                 if (result.Equals(lava))
@@ -95,7 +100,7 @@ public class EventDialogue : Dialogue
                     this.ufoEventHandler.StartEvent();
                     //EventMessage.Instance.ChangeEventMessage("ALIEN ATTACK");
                     SpawnPosition.stop = true;
-                    startNext(15);
+                    startNext(25);
                 }
             }
 
@@ -156,10 +161,18 @@ public class EventDialogue : Dialogue
                 }
             }
 
-            end();
+        GlobalVariables.Instance.PlayerIsStunned = true;
 
-        GlobalVariables.Instance.GameIsPaused = false;
-        SpawnPosition.stop = false;
+        end();
+
+        GlobalVariables.Instance.PlayerIsStunned = true;
+
+        Timer.Instance.StartTimer("fdsfds", 0.2f, () => 
+        {
+            GlobalVariables.Instance.PlayerIsStunned = false;
+            GlobalVariables.Instance.GameIsPaused = false;
+            SpawnPosition.stop = false;
+        });
     }
 
     public void startNext(int time)
