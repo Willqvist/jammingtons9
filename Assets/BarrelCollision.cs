@@ -17,6 +17,8 @@ public class BarrelCollision : MonoBehaviour
 
     public void Explode()
     {
+        GlobalVariables.Instance.barrelsDestroyed++;
+        ScoreUI.instance.setScore(ScoreScreen.calcTot());
         GameObject go = Instantiate(explosion);
         go.transform.position = this.transform.position;
         go.GetComponent<DamageDealer>().Damage = explosionDamage;

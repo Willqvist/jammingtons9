@@ -63,6 +63,8 @@ public class FloorIsLavaEvent : MonoBehaviour
                 Timer.Instance.StartTimer("fsfdsfs", 5f, () =>
                 {
                     goDown = true;
+                    GlobalVariables.Instance.lavaSurvived++;
+                    ScoreUI.instance.setScore(ScoreScreen.calcTot());
                 });
                 eventHasStarted = false;
                 isLavaAtTop = true;

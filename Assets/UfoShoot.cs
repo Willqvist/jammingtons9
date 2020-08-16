@@ -28,4 +28,10 @@ public class UfoShoot : MonoBehaviour
         GameObject go = Instantiate(this.splat);
         go.transform.position = this.transform.position;
     }
+
+    public void Death()
+    {
+        GlobalVariables.Instance.aliensDeath++;
+        ScoreUI.instance.setScore(ScoreScreen.calcTot());
+    }
 }
