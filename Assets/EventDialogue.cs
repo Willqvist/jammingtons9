@@ -55,7 +55,7 @@ public class EventDialogue : Dialogue
 
             if (rand == 1)
             { 
-                result = await this.showOptions(5f, this.text, lava, alien);
+                result = await this.showOptions(5f, this.text, alien);
             }
 
             if (rand == 2)

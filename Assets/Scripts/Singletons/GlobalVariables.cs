@@ -9,6 +9,7 @@ public class GlobalVariables : MonoBehaviour
     public int barrelsDestroyed = 0;
     public int lavaSurvived = 0;
     public int aliensDeath = 0;
+    public static bool replay;
     public static GlobalVariables Instance => instance;
 
     public bool PlayerIsStunned { get; set; }
@@ -18,6 +19,7 @@ public class GlobalVariables : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        Object.DontDestroyOnLoad(instance);
         GlobalVariables.Instance.PlayerHealth = 3;
     }
 }

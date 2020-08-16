@@ -55,6 +55,7 @@ public class Test : Dialogue
         {
             globalLight.intensity = 0.45f;
             prison.SetActive(true);
+            lava.SetActive(true);
         }
 
         this.close();

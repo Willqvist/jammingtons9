@@ -19,6 +19,7 @@ public class GoToGameScene : MonoBehaviour
 
     public void Go()
     {
+        GlobalVariables.replay = true;
         SceneManager.LoadScene("Game");
     }
 }
