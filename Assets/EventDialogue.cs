@@ -33,7 +33,7 @@ public class EventDialogue : Dialogue
 
     protected override async void dialogue()
     {
-        SpawnPosition.stop = false;
+        SpawnPosition.stop = true;
         GlobalVariables.Instance.GameIsPaused = true;
 
             var rand = Random.Range((int) 0, (int) 3);
@@ -159,6 +159,7 @@ public class EventDialogue : Dialogue
             end();
 
         GlobalVariables.Instance.GameIsPaused = false;
+        SpawnPosition.stop = false;
     }
 
     public void startNext(int time)
