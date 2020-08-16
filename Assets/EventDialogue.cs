@@ -35,8 +35,9 @@ public class EventDialogue : Dialogue
     {
         SpawnPosition.stop = true;
         GlobalVariables.Instance.GameIsPaused = true;
+        GlobalVariables.Instance.PlayerIsStunned = true;
 
-            var rand = Random.Range((int) 0, (int) 3);
+            var rand = Random.Range((int) 0, (int) 4);
             await this.showContinue("Oh and you know, you know what happened next");
 
             var result = "";
@@ -49,7 +50,7 @@ public class EventDialogue : Dialogue
 
             if (rand == 0)
             {
-                result = await this.showOptions(5f, this.text, cops, barrels, lava);
+                result = await this.showOptions(5f, this.text, cops);
             }
 
             if (rand == 1)
@@ -72,7 +73,64 @@ public class EventDialogue : Dialogue
                 result = await this.showOptions(5f, this.text, alien);
             }
 
+        if (!result.Equals(lava))
+        {
+            await this.showContinue(
+                "Oh and he ofcourse had a different gun because you know haha he loves them so much");
+
+            SpawnPosition.Haha = true;
+
+            if (rand == 0)
+            {
+                gun = await this.showOptions(5f, this.text1, ak47, Bazooka);
+            }
+
+            if (rand == 1)
+            {
+                gun = await this.showOptions(5f, this.text1, pistol, Bazooka);
+            }
+
+            if (rand == 2)
+            {
+                gun = await this.showOptions(5f, this.text1, Raygun, Bazooka);
+            }
+
+            if (rand == 3)
+            {
+                gun = await this.showOptions(5f, this.text1, Bazooka);
+            }
+
+            if (rand == 4)
+            {
+                gun = await this.showOptions(5f, this.text1, pistol);
+            }
+
             plopp.Play();
+            if (gun != null)
+            {
+                if (gun.Equals(ak47))
+                {
+                    PlayerWeaponLibrary.Instance.GiveGun(PlayerWeaponLibrary.Instance.Ak47);
+                }
+
+                if (gun.Equals(Raygun))
+                {
+                    PlayerWeaponLibrary.Instance.GiveGun(PlayerWeaponLibrary.Instance.Raygun);
+                }
+
+                if (gun.Equals(Bazooka))
+                {
+                    PlayerWeaponLibrary.Instance.GiveGun(PlayerWeaponLibrary.Instance.bazooka);
+                }
+
+                if (gun.Equals(pistol))
+                {
+                    PlayerWeaponLibrary.Instance.GiveGun(PlayerWeaponLibrary.Instance.pistol);
+                }
+            }
+        }
+
+        plopp.Play();
             if (result != null)
             {
                 if (result.Equals(cops))
@@ -101,63 +159,6 @@ public class EventDialogue : Dialogue
                     //EventMessage.Instance.ChangeEventMessage("ALIEN ATTACK");
                     SpawnPosition.stop = true;
                     startNext(25);
-                }
-            }
-
-            if (!result.Equals(lava))
-            {
-                await this.showContinue(
-                    "Oh and he ofcourse had a different gun because you know haha he loves them so much");
-
-                SpawnPosition.Haha = true;
-
-                if (rand == 0)
-                {
-                    gun = await this.showOptions(5f, this.text1, ak47, pistol);
-                }
-
-                if (rand == 1)
-                {
-                    gun = await this.showOptions(5f, this.text1, Bazooka);
-                }
-
-                if (rand == 2)
-                {
-                    gun = await this.showOptions(5f, this.text1, Raygun);
-                }
-
-                if (rand == 3)
-                {
-                    gun = await this.showOptions(5f, this.text1, Bazooka);
-                }
-
-                if (rand == 4)
-                {
-                    gun = await this.showOptions(5f, this.text1, pistol);
-                }
-
-                plopp.Play();
-                if (gun != null)
-                {
-                    if (gun.Equals(ak47))
-                    {
-                        PlayerWeaponLibrary.Instance.GiveGun(PlayerWeaponLibrary.Instance.Ak47);
-                    }
-
-                    if (gun.Equals(Raygun))
-                    {
-                        PlayerWeaponLibrary.Instance.GiveGun(PlayerWeaponLibrary.Instance.Raygun);
-                    }
-
-                    if (gun.Equals(Bazooka))
-                    {
-                        PlayerWeaponLibrary.Instance.GiveGun(PlayerWeaponLibrary.Instance.bazooka);
-                    }
-
-                    if (gun.Equals(pistol))
-                    {
-                        PlayerWeaponLibrary.Instance.GiveGun(PlayerWeaponLibrary.Instance.pistol);
-                    }
                 }
             }
 

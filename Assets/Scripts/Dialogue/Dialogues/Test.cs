@@ -10,26 +10,35 @@ public class Test : Dialogue
     public Light2D globalLight;
     protected override async void dialogue()
     {
+
         end();
         EventDialogue.Instance.GetComponent<EasyDialogue>().BeginDialogue();
         return;
 
-        await this.showContinue("You see.. Gramps haven't always been as old as useless as he is now, you know, his story starts a long long time ago");
+        await this.showContinue("Gramps came into prison in 1990... He was part of a rebellious group");
         ObjectActivator.Instance.player.SetActive(true);
         this.close();
         await this.wait(0.01f);
         this.plop.Play();
         await this.wait(1.5f);
         await this.showContinue("Ah yes.. he was a true fighter");
-        var result = await this.showOptions(15f, "For the longest time, he was a freedom fighter, a rebel! He always enjoyed playing with a", "Pistol", "Raygun");
+        var result = await this.showOptions(15f, "He was a good weapon wielder... He could use almost any weapon, but his favourite was", "Pistol", "Bazooka", "Raygun", "Ak47");
 
         Debug.Log(result);
 
         if(result.Equals("Pistol"))
         {
+            ObjectActivator.Instance.player.GetComponent<PlayerShoot>().Gun = ObjectActivator.Instance.player.GetComponent<PlayerWeaponLibrary>().pistol;
+        }
+        if (result.Equals("Bazooka"))
+        {
+            ObjectActivator.Instance.player.GetComponent<PlayerShoot>().Gun = ObjectActivator.Instance.player.GetComponent<PlayerWeaponLibrary>().bazooka;
+        }
+        if (result.Equals("Ak47"))
+        {
             ObjectActivator.Instance.player.GetComponent<PlayerShoot>().Gun = ObjectActivator.Instance.player.GetComponent<PlayerWeaponLibrary>().Ak47;
         }
-        if(result.Equals("Raygun"))
+        if (result.Equals("Raygun"))
         {
             ObjectActivator.Instance.player.GetComponent<PlayerShoot>().Gun = ObjectActivator.Instance.player.GetComponent<PlayerWeaponLibrary>().Raygun;
         }

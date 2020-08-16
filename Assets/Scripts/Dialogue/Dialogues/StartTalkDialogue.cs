@@ -16,9 +16,10 @@ public class StartTalkDialogue : Dialogue
     protected override async void dialogue()
     {
         await this.wait(2);
-        await this.showContinue("Child", "Dad! Dad! Tell me about that story again back in Mexico 1987!");
-        await this.showContinue("Dad", "Okay Son, but it was along time ago so i will have to try hard to bring back my memories.");
-        await this.showContinue("Dad", "It first started when...");
+        await this.showContinue("Child", "Dad, what happened to grandpa? Why can't he be around us anymore");
+        await this.showContinue("Dad", "Hmmmm.... I'm not sure if you're old enough to hear about the story about grandpa..");
+        await this.showContinue("Child", "I promise I'm old enough to hear about it dad! I'm a big boy now!");
+        await this.showContinue("Dad", "Alright then... well... it began like this");
         end();
         fader.Fade();
     }
