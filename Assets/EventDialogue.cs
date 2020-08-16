@@ -37,7 +37,6 @@ public class EventDialogue : Dialogue
         GlobalVariables.Instance.GameIsPaused = true;
 
             var rand = Random.Range((int) 0, (int) 3);
-
             await this.showContinue("Oh and you know, you know what happened next");
 
             var result = "";

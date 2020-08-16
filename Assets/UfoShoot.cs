@@ -13,8 +13,6 @@ public class UfoShoot : MonoBehaviour
     }
     void StartTimer()
     {
-        gun.cooldownBetweenProjectiles = gun.cooldownBetweenProjectiles + (Random.value * 2) - 1;
-        gun.delayStart(Random.value+0.5f);
     }
 
     public void Shoot()
