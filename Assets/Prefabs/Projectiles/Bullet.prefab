@@ -120,6 +120,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTags:
   - Enemy
+  - Barrel
   onDestroy:
     m_PersistentCalls:
       m_Calls: []

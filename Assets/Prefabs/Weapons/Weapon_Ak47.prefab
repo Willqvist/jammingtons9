@@ -51,8 +51,10 @@ MonoBehaviour:
   projectile: {fileID: 2236630032678501420, guid: afda46aaadbd1054188ca28f2725c42c,
     type: 3}
   shootOrigin: {fileID: 5654611390264038798}
-  cooldownBetweenProjectiles: 0.1
+  cooldownBetweenProjectiles: 0.15
   audio: {fileID: 586290826977847855}
+  varyPitch: 0.02
+  shellSprite: {fileID: 21300000, guid: 563bfb10cb5f1274f934e03a7a6e04be, type: 3}
 --- !u!212 &5654611389865305323
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -93,7 +95,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 56
-  m_Sprite: {fileID: 21300000, guid: cbaa90f42fbd0a44fbfd79201b21a3a2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 580f0fef4d810884a81d21d4b6c7e197, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -135,8 +137,8 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: d503fabb214a51f478afe19d8dca6654, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.75
-  m_Pitch: 1
+  m_Volume: 0.327
+  m_Pitch: 1.69
   Loop: 0
   Mute: 0
   Spatialize: 0

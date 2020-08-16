@@ -11,6 +11,7 @@ public class EventDialogue : Dialogue
     public BarrelEventHandler barrelEventHandler;
     public UfoEventHandler ufoEventHandler;
     public FloorIsLavaEvent floorIsLavaEventHandler;
+    public bool canStartNextEvent = true;
 
     private string cops = "Even more cops arrived!";
     private string barrels = "Bomb barrels away!";
@@ -74,12 +75,14 @@ public class EventDialogue : Dialogue
                 {
                     this.copsEventHandler.StartEventHandler();
                     //EventMessage.Instance.ChangeEventMessage("COPS INBOUND!");
+                    startNext(15);
                 }
 
                 if (result.Equals(barrels))
                 {
                     this.barrelEventHandler.StartEventHandler();
                     //EventMessage.Instance.ChangeEventMessage("BaRreLs");
+                    startNext(15);
                 }
 
                 if (result.Equals(lava))
@@ -93,6 +96,7 @@ public class EventDialogue : Dialogue
                     this.ufoEventHandler.StartEvent();
                     //EventMessage.Instance.ChangeEventMessage("ALIEN ATTACK");
                     SpawnPosition.stop = true;
+                    startNext(15);
                 }
             }
 
@@ -156,8 +160,11 @@ public class EventDialogue : Dialogue
             end();
 
         GlobalVariables.Instance.GameIsPaused = false;
+    }
 
-        Timer.Instance.StartTimer("NextEventTimer", 15f, () => 
+    public void startNext(int time)
+    {
+        Timer.Instance.StartTimer("NextEventTimer", time, () =>
         {
             this.GetComponent<EasyDialogue>().BeginDialogue();
         });

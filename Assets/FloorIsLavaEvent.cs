@@ -13,6 +13,7 @@ public class FloorIsLavaEvent : MonoBehaviour
 
     private bool eventHasStarted;
     private bool isLavaAtTop = false;
+    private bool goDown = false;
 
     private void Start()
     {
@@ -21,6 +22,8 @@ public class FloorIsLavaEvent : MonoBehaviour
 
     public void StartEvent()
     {
+        this.goDown = false;
+        this.isLavaAtTop = false;
         eventHasStarted = true;
         GameObject s = Instantiate(screenshake);
         var f = s.GetComponent<ScreenShake>();
@@ -33,6 +36,19 @@ public class FloorIsLavaEvent : MonoBehaviour
 
     private void Update()
     {
+        if (goDown)
+        {
+            if (lava.transform.position.y > orgPos.y)
+            {
+                lava.transform.position -= new Vector3(0, 1f * Time.deltaTime);
+            }
+            else
+            {
+                EventDialogue.Instance.startNext(1);
+                goDown = false;
+            }
+        }
+
         if (!eventHasStarted)
             return;
 
@@ -41,9 +57,16 @@ public class FloorIsLavaEvent : MonoBehaviour
         else
         {
             Destroy(inst.gameObject);
-            lava.transform.position = orgPos;
-            eventHasStarted = false;
-            isLavaAtTop = true;
-        }      
+            //lava.transform.position = orgPos;
+            if(!isLavaAtTop)
+            {
+                Timer.Instance.StartTimer("fsfdsfs", 5f, () =>
+                {
+                    goDown = true;
+                });
+                eventHasStarted = false;
+                isLavaAtTop = true;
+            }
+        } 
     }
 }
