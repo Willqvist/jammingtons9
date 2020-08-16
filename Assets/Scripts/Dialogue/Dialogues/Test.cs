@@ -7,14 +7,10 @@ public class Test : Dialogue
 {
     public AudioSource plop;
     public GameObject prison;
+    public GameObject lava;
     public Light2D globalLight;
     protected override async void dialogue()
     {
-
-        end();
-        EventDialogue.Instance.GetComponent<EasyDialogue>().BeginDialogue();
-        return;
-
         await this.showContinue("Gramps came into prison in 1990... He was part of a rebellious group");
         ObjectActivator.Instance.player.SetActive(true);
         this.close();

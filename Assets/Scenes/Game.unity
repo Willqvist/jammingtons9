@@ -1089,6 +1089,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   plop: {fileID: 1252329791}
   prison: {fileID: 1812907556}
+  lava: {fileID: 0}
   globalLight: {fileID: 775898969}
 --- !u!4 &303906194
 Transform:
@@ -1117,7 +1118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue: {fileID: 303906193}
-  name: wew
+  name: Dad
 --- !u!114 &303906196
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3827,24 +3828,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.23778152, y: 0.63357115}
   m_EdgeRadius: 0
---- !u!114 &1300993277 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4530892793257647945, guid: be7fdb735b8ad2f4cb7201956122f0c2,
-    type: 3}
-  m_PrefabInstance: {fileID: 1586864970}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 617c1b4a1433dca459ac02c96eccf8eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!95 &1300993280 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 7982931397998288452, guid: be7fdb735b8ad2f4cb7201956122f0c2,
-    type: 3}
-  m_PrefabInstance: {fileID: 1586864970}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1322718688 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1143699999120184754, guid: 351d7114527210b4593ef101b24109c2,
@@ -5023,7 +5006,7 @@ PrefabInstance:
     - target: {fileID: 4530892793257647946, guid: be7fdb735b8ad2f4cb7201956122f0c2,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4530892793257647946, guid: be7fdb735b8ad2f4cb7201956122f0c2,
         type: 3}
@@ -5049,7 +5032,7 @@ PrefabInstance:
         type: 3}
       propertyPath: gun
       value: 
-      objectReference: {fileID: 1300993280}
+      objectReference: {fileID: 0}
     - target: {fileID: 5450380778008227785, guid: be7fdb735b8ad2f4cb7201956122f0c2,
         type: 3}
       propertyPath: m_Offset.y
@@ -5074,7 +5057,7 @@ PrefabInstance:
         type: 3}
       propertyPath: gun
       value: 
-      objectReference: {fileID: 1300993277}
+      objectReference: {fileID: 0}
     - target: {fileID: 5450380778008227789, guid: be7fdb735b8ad2f4cb7201956122f0c2,
         type: 3}
       propertyPath: m_Name
@@ -7536,7 +7519,7 @@ PrefabInstance:
     - target: {fileID: 1143699998287700445, guid: 351d7114527210b4593ef101b24109c2,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1143699998531694941, guid: 351d7114527210b4593ef101b24109c2,
         type: 3}
