@@ -21,7 +21,6 @@ public class HurtAudioSource : MonoBehaviour
     {
         if (!source.isPlaying && dead)
         {
-            Debug.Log("Destroying!!!");
             Destroy(this.gameObject);
         }
         if(!dead)
@@ -30,7 +29,6 @@ public class HurtAudioSource : MonoBehaviour
 
     public void Play()
     {
-        Debug.Log("Play");
         source.pitch = pitch + ((Random.value * 2) - 1)*0.06f;
         source.Play();
     }

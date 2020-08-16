@@ -204,7 +204,7 @@ MonoBehaviour:
   raycastStart: {fileID: 297954691887138486}
   stopAtLayerCollision:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 768
   tagsToTarget:
   - Enemy
   - Barrel
