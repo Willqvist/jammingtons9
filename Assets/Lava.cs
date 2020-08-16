@@ -12,7 +12,6 @@ public class Lava : MonoBehaviour
         }
         if (collision.gameObject.tag.Equals("Enemy") || collision.gameObject.tag.Equals("ufo"))
         {
-            Debug.Log("IM HERE");
             collision.gameObject.GetComponent<Hurt>().DealDamage(100000000);
         }
     }
