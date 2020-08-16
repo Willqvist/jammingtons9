@@ -14,6 +14,7 @@ public class Hurt : MonoBehaviour
     public HurtAudioSource source;
 
     private HurtAudioSource inst;
+    private bool ded = false;
     
     private void Start()
     {
@@ -34,6 +35,7 @@ public class Hurt : MonoBehaviour
 
     public virtual void DealDamage(int damage)
     {
+        if (ded) return;
         if(this.health != null)
         {
             this.health.RemoveHealth(damage);
@@ -42,6 +44,7 @@ public class Hurt : MonoBehaviour
             {
                 Debug.Log("DEATH");
                 this.onDeath.Invoke();
+                ded = true;
                 Destroy(this.gameObject);
             }
         }

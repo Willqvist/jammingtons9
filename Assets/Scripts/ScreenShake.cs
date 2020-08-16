@@ -15,25 +15,29 @@ public class ScreenShake : MonoBehaviour
 
     private Vector3 screenShake = new Vector3(0,0,0);
     private string name,parent;
+
+    private float alive;
     private void Start()
     {
         this.name = this.gameObject.name;
         this.parent = this.transform.parent != null ? this.transform.parent.name : "null";
         this.follow = Camera.main.GetComponent<CameraFollow>();
         originalCameraPosition = Camera.main.transform.position;
-        Timer.Instance.StartTimer("ScreenShake", duration, () =>
-        {
-            Camera.main.transform.position = new Vector2(0, Camera.main.transform.position.y);
-            Debug.Log("NAME:" + name + " | " + parent);
-            if(!hasParent)
-                Destroy(this.gameObject);
-        });
+        this.alive = duration;
+        this.alive = duration;
     }
 
     private void Update()
     {
         screenShake = new Vector3(Random.Range(-radius * intensity, radius * intensity), Random.Range(-radius * intensity, radius * intensity), 0);
-        this.follow.transform.position = new Vector3(this.follow.transform.position.x+Mathf.Clamp(screenShake.x, -radius, radius), this.follow.transform.position.y+Mathf.Clamp(screenShake.y, -radius, radius), Camera.main.transform.position.z);
+        Camera.main.transform.position = new Vector3(this.follow.transform.position.x+Mathf.Clamp(screenShake.x, -radius, radius), this.follow.transform.position.y+Mathf.Clamp(screenShake.y, -radius, radius), Camera.main.transform.position.z);
+        this.alive -= Time.deltaTime;
+        if (alive < 0)
+        {
+            Camera.main.transform.position = new Vector3(0, Camera.main.transform.position.y,Camera.main.transform.position.z);
+            if(!hasParent)
+                Destroy(this.gameObject);
+        }
     }
 
     public void GetShotAtScreenShakeTemplate()
