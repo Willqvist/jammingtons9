@@ -61,6 +61,8 @@ public class PlayerMovement : MonoBehaviour
             falling = false;
         }
 
+        Debug.Log(GlobalVariables.Instance.PlayerIsStunned);
+
         if(GlobalVariables.Instance.PlayerIsStunned)
         {
             isWalking = false;
