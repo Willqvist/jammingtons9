@@ -14,14 +14,17 @@ public class ScreenShake : MonoBehaviour
     private CameraFollow follow;
 
     private Vector3 screenShake = new Vector3(0,0,0);
-    
+    private string name,parent;
     private void Start()
     {
+        this.name = this.gameObject.name;
+        this.parent = this.transform.parent != null ? this.transform.parent.name : "null";
         this.follow = Camera.main.GetComponent<CameraFollow>();
         originalCameraPosition = Camera.main.transform.position;
         Timer.Instance.StartTimer("ScreenShake", duration, () =>
         {
             Camera.main.transform.position = new Vector2(0, Camera.main.transform.position.y);
+            Debug.Log("NAME:" + name + " | " + parent);
             if(!hasParent)
                 Destroy(this.gameObject);
         });
