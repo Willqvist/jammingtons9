@@ -57,10 +57,6 @@ public class RaycastProjectile : MonoBehaviour
 
         foreach (var h in sorted)
         {
-            if (stopAtLayerCollision == (stopAtLayerCollision | (1 << h.collider.gameObject.layer)))
-            {
-                break;
-            }
 
             foreach(var t in tagsToTarget)
             {
@@ -72,6 +68,10 @@ public class RaycastProjectile : MonoBehaviour
                         this.onHit.Invoke(this.raycastStart.position, h.transform.position);
                     }
                 }
+            }
+            if (stopAtLayerCollision == (stopAtLayerCollision | (1 << h.collider.gameObject.layer)))
+            {
+                break;
             }
         }
     }
