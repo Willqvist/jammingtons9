@@ -13,18 +13,16 @@ public class UfoShoot : MonoBehaviour
     }
     void StartTimer()
     {
-        Timer.Instance.StartTimer("edffsd", 2f, () =>
-        {
-
-        });
+        gun.cooldownBetweenProjectiles = gun.cooldownBetweenProjectiles + (Random.value * 2) - 1;
+        gun.delayStart(Random.value+0.5f);
     }
 
     public void Shoot()
     {
         gun.Shoot(Vector2.down);
-        StartTimer();
         shootAudio.Play();
-        //Debug.Log("Wew");
+
+            //Debug.Log("Wew");
     }
 
     public void Splat()

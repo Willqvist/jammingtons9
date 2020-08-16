@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
@@ -11,7 +12,7 @@ public class SceneFader : MonoBehaviour
     public CanvasGroup group;
     public Volume volume;
     public float speed;
-
+    public UnityEvent events;
     private bool fading = false;
 
     private Bloom bloom;
@@ -24,6 +25,20 @@ public class SceneFader : MonoBehaviour
         }
     }
 
+    private bool hasTargets()
+    {
+        bool hasPersistentTarget = false;
+        for (int i = 0; i < events.GetPersistentEventCount(); i++)
+        {
+            if (events.GetPersistentTarget(i) != null)
+            {
+                hasPersistentTarget = true;
+            }
+        }
+
+        return hasPersistentTarget;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -31,10 +46,18 @@ public class SceneFader : MonoBehaviour
         {
             group.alpha = Mathf.Lerp(group.alpha, 1, Time.deltaTime * speed);
             bloom.intensity.value = Mathf.Lerp(bloom.intensity.value, 12f, Time.deltaTime * speed);
-            if (group.alpha > 0.98)
+            if (group.alpha > 0.99)
             {
-                bloom.intensity.value = 0;
-                SceneManager.LoadScene("Game");
+                if (!hasTargets())
+                {
+                    bloom.intensity.value = 0;
+                    SceneManager.LoadScene("Game");
+                }
+                else
+                {
+                    events.Invoke();
+                }
+
             }
         }
     }

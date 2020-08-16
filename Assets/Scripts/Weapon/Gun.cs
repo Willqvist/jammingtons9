@@ -24,6 +24,15 @@ public class Gun : Weapon
         this.animator = GetComponent<Animator>();
     }
 
+    public void delayStart(float delay)
+    {
+        this.startedTimer = true;
+        Timer.Instance.StartTimer(this.gameObject.GetInstanceID()+"-delay", delay, () => 
+        {
+            this.startedTimer = false;
+        });
+    }
+
     public bool Shoot(Vector2 shootDirection)
     {
         if(this.startedTimer == true)
@@ -44,7 +53,7 @@ public class Gun : Weapon
         go.GetComponent<DamageDealer>().Damage = this.weaponData.damage;
 
         this.startedTimer = true;
-        Timer.Instance.StartTimer("Gun", this.cooldownBetweenProjectiles, () => 
+        Timer.Instance.StartTimer(this.gameObject.GetInstanceID()+"", this.cooldownBetweenProjectiles, () => 
         {
             this.startedTimer = false;
         });

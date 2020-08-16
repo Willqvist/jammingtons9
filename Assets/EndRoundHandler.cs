@@ -13,10 +13,13 @@ public class EndRoundHandler : MonoBehaviour
 
     public Volume volume;
 
+    public AudioSource dyingSound;
+    
     public CanvasGroup group;
     public float speed = 2;
     private Bloom bloom;
     private bool fade = false;
+    
     private void Awake()
     {
         instance = this;
@@ -37,16 +40,18 @@ public class EndRoundHandler : MonoBehaviour
         {
             group.alpha = Mathf.Lerp(group.alpha, 1, Time.deltaTime * speed);
             bloom.intensity.value = Mathf.Lerp(bloom.intensity.value, 50f, Time.deltaTime * speed);
-            if (group.alpha > 0.98)
+            if (group.alpha > 0.92)
             {
-                bloom.intensity.value = 0;
-                Application.LoadLevel(Application.loadedLevel);
+                //Application.LoadLevel(Application.loadedLevel);
+                SceneManager.LoadScene("Score");
+                //bloom.intensity.value = 0;
             }
         }
     }
 
     public void StartEnding()
     {
+        dyingSound.Play();
         fade = true;
     }
 }
