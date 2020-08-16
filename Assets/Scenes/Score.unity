@@ -1706,6 +1706,7 @@ GameObject:
   - component: {fileID: 1760537657}
   - component: {fileID: 1760537659}
   - component: {fileID: 1760537658}
+  - component: {fileID: 1760537660}
   m_Layer: 5
   m_Name: Center
   m_TagString: Untagged
@@ -1780,6 +1781,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1760537656}
   m_CullTransparentMesh: 0
+--- !u!114 &1760537660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1760537656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 900af1ff40b18e244a6fe600c0e7e0bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cops: {fileID: 88580324}
+  lava: {fileID: 1841736952}
+  ufo: {fileID: 804025546}
+  barrel: {fileID: 200991342}
+  tot: {fileID: 28029644}
 --- !u!1 &1784911808
 GameObject:
   m_ObjectHideFlags: 0

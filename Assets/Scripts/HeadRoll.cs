@@ -18,4 +18,10 @@ public class HeadRoll : MonoBehaviour
             rb.AddForce(new Vector2((Random.value * 4 + 1), 14), ForceMode2D.Impulse);
         }
     }
+
+    public void onDeath()
+    {
+        GlobalVariables.Instance.guardDeath++;
+        ScoreUI.instance.setScore(ScoreScreen.calcTot());
+    }
 }
